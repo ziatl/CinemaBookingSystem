@@ -5,6 +5,16 @@
  */
 package en.uog.frames;
 
+import en.uog.dao.BookingDaoImpl;
+import en.uog.entities.User;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+import java.util.Properties;
+import javax.swing.text.DateFormatter;
+
 
 /**
  *
@@ -17,8 +27,9 @@ public class InscriptionFrame extends javax.swing.JFrame {
      */
     public InscriptionFrame() {
         initComponents();
+        this.errNUll();
         this.setLocationRelativeTo(null);
-       
+
     }
 
     /**
@@ -30,7 +41,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        dekstop = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -44,7 +55,6 @@ public class InscriptionFrame extends javax.swing.JFrame {
         txfAddress = new javax.swing.JTextField();
         txfEmail = new javax.swing.JTextField();
         txfPassword = new javax.swing.JTextField();
-        txfBirthday = new javax.swing.JTextField();
         errFistnamt = new javax.swing.JLabel();
         errLastName = new javax.swing.JLabel();
         errTelephone = new javax.swing.JLabel();
@@ -56,6 +66,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
         errInscription = new javax.swing.JLabel();
+        panBirthday = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inscription");
@@ -125,12 +136,6 @@ public class InscriptionFrame extends javax.swing.JFrame {
             }
         });
 
-        txfBirthday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfBirthdayActionPerformed(evt);
-            }
-        });
-
         errFistnamt.setForeground(new java.awt.Color(255, 255, 102));
         errFistnamt.setText("err Firtname");
 
@@ -175,47 +180,60 @@ public class InscriptionFrame extends javax.swing.JFrame {
         errInscription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errInscription.setText("Login or Password is incorrect");
 
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txfFirstname, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txfLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txfTelephone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txfAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txfEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txfPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txfBirthday, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errFistnamt, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errTelephone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errBirthday, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnInscription, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(errInscription, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panBirthday.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panBirthdayLayout = new javax.swing.GroupLayout(panBirthday);
+        panBirthday.setLayout(panBirthdayLayout);
+        panBirthdayLayout.setHorizontalGroup(
+            panBirthdayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 207, Short.MAX_VALUE)
+        );
+        panBirthdayLayout.setVerticalGroup(
+            panBirthdayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 16, Short.MAX_VALUE)
+        );
+
+        dekstop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(txfFirstname, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(txfLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(txfTelephone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(txfAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(txfEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(txfPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errFistnamt, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errLastName, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errTelephone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errAddress, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errPassword, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errBirthday, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(btnInscription, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(btnCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(errInscription, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(panBirthday, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout dekstopLayout = new javax.swing.GroupLayout(dekstop);
+        dekstop.setLayout(dekstopLayout);
+        dekstopLayout.setHorizontalGroup(
+            dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dekstopLayout.createSequentialGroup()
                 .addGap(3, 3, 3)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dekstopLayout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
+                        .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dekstopLayout.createSequentialGroup()
                                 .addGap(36, 36, 36)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
@@ -224,94 +242,100 @@ public class InscriptionFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txfLastName, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txfTelephone, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txfAddress, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txfEmail, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txfPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txfBirthday, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGap(0, 185, Short.MAX_VALUE)
+                                    .addGroup(dekstopLayout.createSequentialGroup()
+                                        .addGap(0, 182, Short.MAX_VALUE)
                                         .addComponent(btnCancel))
-                                    .addComponent(txfFirstname)))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                    .addComponent(txfFirstname)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dekstopLayout.createSequentialGroup()
+                                        .addComponent(panBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(dekstopLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(43, 43, 43)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(errFistnamt, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(errLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                .addComponent(errTelephone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(errAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(errEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(errPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(errBirthday, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(3, 3, 3))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dekstopLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(errFistnamt, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(errLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                        .addComponent(errTelephone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(errAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(errEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(errPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(dekstopLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(errBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(errInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(206, 206, 206))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        dekstopLayout.setVerticalGroup(
+            dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(errInscription)
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(errFistnamt))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(errLastName))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(errTelephone))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(errAddress))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(errEmail))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(errPassword))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txfBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
+                    .addComponent(panBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errBirthday))
-                .addGap(32, 32, 32)
+                .addGap(59, 59, 59)
                 .addComponent(btnInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel)
-                .addGap(43, 43, 43))
+                .addGap(151, 151, 151))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dekstop, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dekstop, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -341,13 +365,22 @@ public class InscriptionFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txfPasswordActionPerformed
 
-    private void txfBirthdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfBirthdayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfBirthdayActionPerformed
-
     private void btnInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscriptionActionPerformed
         // TODO add your handling code here:
-        
+        dao = new BookingDaoImpl();
+        if (this.validation()){
+            User user = new User();
+            user.setAddress(txfAddress.getText());
+            user.setFirstname(txfFirstname.getText());
+            user.setLastName(txfLastName.getText());
+            user.setBirthday(new Date());
+            user.setEmail(txfEmail.getText());
+            user.setPassword(txfPassword.getText());
+            dao.addUser(user);
+            this.dispose();
+             ConnexionFrame cf = new ConnexionFrame();
+            cf.setVisible(true);
+        }
     }//GEN-LAST:event_btnInscriptionActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -391,11 +424,46 @@ public class InscriptionFrame extends javax.swing.JFrame {
             }
         });
     }
+    BookingDaoImpl dao = new BookingDaoImpl();
+    static String MESSAGE_EMPTY = "can not be empty";
+    boolean validation = true;
+    public boolean validation(){
+        errNUll();
+        validation = true;
+        //Address
+        if (txfAddress.getText().isEmpty()) {
+            errAddress.setText(MESSAGE_EMPTY);
+            validation = false;
+        }
+        //Email
+        if (txfEmail.getText().isEmpty()) {
+            errEmail.setText(MESSAGE_EMPTY);
+            validation = false;
+        }
+        //FIrsname
+        if (txfEmail.getText().isEmpty()) {
+            errEmail.setText(MESSAGE_EMPTY);
+            validation = false;
+        }
+        return validation;
+    }
     
-
+    public void errNUll(){
+        this.errAddress.setText("");
+        this.errBirthday.setText("");
+        this.errEmail.setText("");
+        this.errFistnamt.setText("");
+        this.errInscription.setText("");
+        this.errLastName.setText("");
+        this.errPassword.setText("");
+        this.errTelephone.setText("");
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnInscription;
+    private javax.swing.JDesktopPane dekstop;
     private javax.swing.JLabel errAddress;
     private javax.swing.JLabel errBirthday;
     private javax.swing.JLabel errEmail;
@@ -404,7 +472,6 @@ public class InscriptionFrame extends javax.swing.JFrame {
     private javax.swing.JLabel errLastName;
     private javax.swing.JLabel errPassword;
     private javax.swing.JLabel errTelephone;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -413,8 +480,8 @@ public class InscriptionFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel panBirthday;
     private javax.swing.JTextField txfAddress;
-    private javax.swing.JTextField txfBirthday;
     private javax.swing.JTextField txfEmail;
     private javax.swing.JTextField txfFirstname;
     private javax.swing.JTextField txfLastName;

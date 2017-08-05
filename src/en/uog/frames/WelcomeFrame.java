@@ -31,18 +31,26 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        itemDisconnect = new javax.swing.JMenu();
         itemConnexion = new javax.swing.JMenuItem();
         itemExit = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        itemListeUsers = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(713, 515));
         setMinimumSize(new java.awt.Dimension(713, 515));
+        setPreferredSize(new java.awt.Dimension(713, 515));
         setResizable(false);
 
-        desktop.setLayout(new java.awt.BorderLayout());
+        desktop.setLayout(new java.awt.BorderLayout(1, 0));
 
-        jMenu1.setText("File");
+        itemDisconnect.setText("File");
 
         itemConnexion.setText("Disconnect");
         itemConnexion.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +58,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 itemConnexionActionPerformed(evt);
             }
         });
-        jMenu1.add(itemConnexion);
+        itemDisconnect.add(itemConnexion);
 
         itemExit.setText("Exit");
         itemExit.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +66,42 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 itemExitActionPerformed(evt);
             }
         });
-        jMenu1.add(itemExit);
+        itemDisconnect.add(itemExit);
+
+        jMenuBar1.add(itemDisconnect);
+
+        jMenu3.setText("Users");
+
+        jMenuItem3.setText("Add user");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        itemListeUsers.setText("List of users");
+        itemListeUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemListeUsersActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemListeUsers);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu1.setText("Movies");
+
+        jMenuItem1.setText("Add movie");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("List of movies");
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -71,7 +114,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
+            .addComponent(desktop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,6 +138,25 @@ public class WelcomeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_itemExitActionPerformed
+
+    private void itemListeUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListeUsersActionPerformed
+
+           // TODO add your handling code here:
+        desktop.removeAll();
+        IFUserManage ifu = new IFUserManage();
+        ifu.setSize(desktop.getSize());
+        ifu.setVisible(true);
+        desktop.add(ifu);
+
+    }//GEN-LAST:event_itemListeUsersActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,9 +199,15 @@ public class WelcomeFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem itemConnexion;
+    private javax.swing.JMenu itemDisconnect;
     private javax.swing.JMenuItem itemExit;
+    private javax.swing.JMenuItem itemListeUsers;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,9 +6,13 @@
 
 package en.uog.frames;
 
+import en.uog.dao.BookingDaoImpl;
 import en.uog.dao.ValidationProvider;
+import en.uog.database.PersistenceManager;
+import en.uog.entities.User;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -102,7 +106,6 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         jLabel4.setBounds(170, 380, 190, 16);
 
         txfLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfLogin.setText("a");
         txfLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txfLoginActionPerformed(evt);
@@ -112,7 +115,6 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         txfLogin.setBounds(120, 140, 280, 26);
 
         txfPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txfPassword.setText("a");
         jDesktopPane1.add(txfPassword);
         txfPassword.setBounds(120, 220, 280, 26);
 
@@ -155,12 +157,19 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        em = PersistenceManager.getEntityManager();
         validation();
         if (validation) {
-            this.dispose();
-            WelcomeFrame wf = new WelcomeFrame();
-            wf.setVisible(true);
+            if(this.login() != null){
+                this.dispose();
+                WelcomeFrame wf = new WelcomeFrame();
+                wf.setVisible(true);
+            }else{
+                
+            }
+            
         } else {
+           
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -210,6 +219,8 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
             }
         });
     }
+    EntityManager em = PersistenceManager.getEntityManager();
+    BookingDaoImpl dao = new BookingDaoImpl();
     public void validation(){
         validation = true;
         if (!ValidationProvider.minString(txfPassword.getText(), 8)) {
@@ -218,6 +229,10 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         }else{
             errPassword.setText("");
         }
+    }
+    private User login() {
+       dao = new BookingDaoImpl();
+       return dao.login(txfLogin.getText(), txfPassword.getText());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -269,5 +284,7 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
     public void windowDeactivated(WindowEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
 }

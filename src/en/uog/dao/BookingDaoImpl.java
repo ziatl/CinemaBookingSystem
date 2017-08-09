@@ -6,6 +6,7 @@
 package en.uog.dao;
 
 import en.uog.database.PersistenceManager;
+import en.uog.entities.Profile;
 import en.uog.entities.User;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -68,6 +69,22 @@ public class BookingDaoImpl implements IBookingDao{
     }
 
     @Override
+    public User findUserByEmail(String email) {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT u from User u where u.email=:x");
+        q.setParameter("x", email);
+        try {
+            return (User) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+        
+    }
+    
+    
+
+    @Override
     public void delUser(User u) {
          EntityManager em = PersistenceManager.getEntityManager();
 		EntityTransaction et = em.getTransaction();
@@ -76,6 +93,21 @@ public class BookingDaoImpl implements IBookingDao{
 		et.commit();
 		em.close();
     }
+
+    @Override
+    public Profile findProfileByName(String prof) {
+       em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT p from Profile p where p.profileName=:x");
+        q.setParameter("x", prof);
+        try {
+            return (Profile) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    
     
     
     

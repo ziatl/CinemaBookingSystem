@@ -13,6 +13,7 @@ import en.uog.entities.User;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.persistence.EntityManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,8 +25,7 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
     public ConnexionFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
-        errLogin.setText("");
-        errPassword.setText("");
+        errNUll();
     }
 
     /** This method is called from within the constructor to
@@ -122,13 +122,13 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         errPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errPassword.setText("err password");
         jDesktopPane1.add(errPassword);
-        errPassword.setBounds(200, 250, 120, 16);
+        errPassword.setBounds(120, 250, 280, 16);
 
         errLogin.setForeground(new java.awt.Color(255, 255, 51));
         errLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errLogin.setText("err login");
         jDesktopPane1.add(errLogin);
-        errLogin.setBounds(200, 170, 120, 16);
+        errLogin.setBounds(120, 170, 280, 16);
 
         errConnexion.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         errConnexion.setForeground(new java.awt.Color(255, 102, 102));
@@ -161,13 +161,13 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         validation();
         if (validation) {
             if(this.login() != null){
+          
                 this.dispose();
                 WelcomeFrame wf = new WelcomeFrame();
                 wf.setVisible(true);
             }else{
-                
+                this.errConnexion.setText("Login or Password is incorrect");
             }
-            
         } else {
            
         }
@@ -221,18 +221,35 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
     }
     EntityManager em = PersistenceManager.getEntityManager();
     BookingDaoImpl dao = new BookingDaoImpl();
+    static String EMAIL_FORMAT_INCORRECT = "set a correct email format";
+    static String MESSAGE_EMPTY = "can not be empty";
     public void validation(){
         validation = true;
-        if (!ValidationProvider.minString(txfPassword.getText(), 8)) {
+        errNUll();
+        if (!ValidationProvider.minString(txfPassword.getText().trim(), 8)) {
             validation = false;
-            errPassword.setText("Minimum = 8");
-        }else{
-            errPassword.setText("");
+            errPassword.setText("minimum 8 charaters");
+        }else if (txfPassword.getText().trim().isEmpty()){
+            validation = false;
+            errPassword.setText(MESSAGE_EMPTY);
         }
+        
+        if (txfLogin.getText().trim().isEmpty()){
+            validation = false;
+            errLogin.setText(MESSAGE_EMPTY);
+        }else if(!ValidationProvider.validEmail(txfLogin.getText().trim())){
+            validation = false;
+            errLogin.setText(EMAIL_FORMAT_INCORRECT);
+         }
     }
     private User login() {
        dao = new BookingDaoImpl();
        return dao.login(txfLogin.getText(), txfPassword.getText());
+    }
+    public void errNUll(){
+        this.errPassword.setText("");
+        this.errLogin.setText("");
+        this.errConnexion.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

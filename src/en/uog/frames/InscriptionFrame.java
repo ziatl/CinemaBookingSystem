@@ -6,6 +6,9 @@
 package en.uog.frames;
 
 import en.uog.dao.BookingDaoImpl;
+import en.uog.dao.SendMail;
+import en.uog.dao.ValidationProvider;
+import en.uog.entities.Profile;
 import en.uog.entities.User;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -82,7 +85,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Telephone :");
+        jLabel3.setText("Contact :");
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -249,7 +252,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
                                     .addComponent(txfEmail, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txfPassword, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(dekstopLayout.createSequentialGroup()
-                                        .addGap(0, 182, Short.MAX_VALUE)
+                                        .addGap(0, 187, Short.MAX_VALUE)
                                         .addComponent(btnCancel))
                                     .addComponent(txfFirstname)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dekstopLayout.createSequentialGroup()
@@ -370,15 +373,19 @@ public class InscriptionFrame extends javax.swing.JFrame {
         dao = new BookingDaoImpl();
         if (this.validation()){
             User user = new User();
-            user.setAddress(txfAddress.getText());
-            user.setFirstname(txfFirstname.getText());
-            user.setLastName(txfLastName.getText());
+            user.setAddress(txfAddress.getText().trim());
+            user.setFirstname(txfFirstname.getText().trim());
+            user.setLastName(txfLastName.getText().trim());
             user.setBirthday(new Date());
-            user.setEmail(txfEmail.getText());
-            user.setPassword(txfPassword.getText());
+            user.setEmail(txfEmail.getText().trim());
+            user.setPassword(txfPassword.getText().trim().trim());
+            //Set profile User
+            Profile p = dao.findProfileByName("USER");
+            user.setProfile(p);
             dao.addUser(user);
+            SendMail.SendEmail(txfFirstname.getText().trim(), txfEmail.getText().trim(), txfPassword.getText().trim().trim());
             this.dispose();
-             ConnexionFrame cf = new ConnexionFrame();
+            ConnexionFrame cf = new ConnexionFrame();
             cf.setVisible(true);
         }
     }//GEN-LAST:event_btnInscriptionActionPerformed
@@ -426,25 +433,44 @@ public class InscriptionFrame extends javax.swing.JFrame {
     }
     BookingDaoImpl dao = new BookingDaoImpl();
     static String MESSAGE_EMPTY = "can not be empty";
+    static String EMAIL_EXIST = "email already exist";
+    static String EMAIL_FORMAT_INCORRECT = "set a correct email format";
     boolean validation = true;
     public boolean validation(){
         errNUll();
         validation = true;
         //Address
-        if (txfAddress.getText().isEmpty()) {
+        if (txfAddress.getText().trim().isEmpty()) {
             errAddress.setText(MESSAGE_EMPTY);
             validation = false;
         }
         //Email
-        if (txfEmail.getText().isEmpty()) {
+        if (txfEmail.getText().trim().isEmpty()) {
             errEmail.setText(MESSAGE_EMPTY);
+            validation = false;
+        }else if (dao.findUserByEmail(txfEmail.getText().trim())!=null){
+            errEmail.setText(EMAIL_EXIST);
+            validation = false;
+        }else if (!ValidationProvider.validEmail(txfEmail.getText().trim())){
+            errEmail.setText(EMAIL_FORMAT_INCORRECT);
             validation = false;
         }
         //FIrsname
-        if (txfEmail.getText().isEmpty()) {
-            errEmail.setText(MESSAGE_EMPTY);
+        if (txfFirstname.getText().trim().isEmpty()) {
+            errFistnamt.setText(MESSAGE_EMPTY);
             validation = false;
         }
+        //Lastname
+        if (txfLastName.getText().trim().isEmpty()) {
+            errLastName.setText(MESSAGE_EMPTY);
+            validation = false;
+        }
+        //Contact
+        if (txfTelephone.getText().trim().isEmpty()) {
+            errTelephone.setText(MESSAGE_EMPTY);
+            validation = false;
+        }
+        
         return validation;
     }
     

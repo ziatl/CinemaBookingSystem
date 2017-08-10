@@ -13,14 +13,14 @@ import javax.persistence.EntityTransaction;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class Principale {
 
     public static void main(String[] arg){ 
         EntityManager em = PersistenceManager.getEntityManager();
         User u = new User();
-        u.setLastName("Aziz");
+        u.setLastName("faycal");
         try {
              EntityTransaction et = em.getTransaction();
             et.begin();
@@ -30,7 +30,5 @@ public class Principale {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
-
     }
 }

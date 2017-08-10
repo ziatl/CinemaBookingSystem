@@ -7,7 +7,7 @@ package en.uog.frames;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class WelcomeFrame extends javax.swing.JFrame {
 

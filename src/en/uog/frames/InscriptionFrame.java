@@ -19,7 +19,7 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class InscriptionFrame extends javax.swing.JFrame {
        public static UtilDateModel model = new UtilDateModel();

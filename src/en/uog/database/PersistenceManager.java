@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class PersistenceManager {
     private static EntityManagerFactory emf;

@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 @Entity
 public class BookTicket {

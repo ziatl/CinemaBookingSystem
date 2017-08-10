@@ -13,7 +13,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class IFUserManage extends javax.swing.JInternalFrame {
     

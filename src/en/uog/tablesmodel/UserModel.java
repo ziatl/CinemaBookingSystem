@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class UserModel extends AbstractTableModel{
     public String[] columsName = new String[]{"Firstname","Lastname","Email"};

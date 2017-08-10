@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 @Entity
 public class MakePayment {

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class ConnexionFrame extends javax.swing.JFrame implements WindowListener{
     boolean validation = true;

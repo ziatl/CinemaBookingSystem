@@ -12,7 +12,7 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
 /**
  *
- * @author aziz
+ * @author faycal
  */
 public class IFAddMovie extends javax.swing.JInternalFrame {
 

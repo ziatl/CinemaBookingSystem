@@ -10,13 +10,11 @@ import en.uog.dao.SendMail;
 import en.uog.dao.ValidationProvider;
 import en.uog.entities.Profile;
 import en.uog.entities.User;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-import java.util.Properties;
-import javax.swing.text.DateFormatter;
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
 
 /**
@@ -24,7 +22,9 @@ import javax.swing.text.DateFormatter;
  * @author aziz
  */
 public class InscriptionFrame extends javax.swing.JFrame {
-
+       public static UtilDateModel model = new UtilDateModel();
+     public static JDatePanelImpl datePanel = new JDatePanelImpl(model);
+     public static JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
     /**
      * Creates new form InscriptionFrame
      */
@@ -32,7 +32,8 @@ public class InscriptionFrame extends javax.swing.JFrame {
         initComponents();
         this.errNUll();
         this.setLocationRelativeTo(null);
-
+        model.setValue(new Date());
+        panDate.add(datePicker);
     }
 
     /**
@@ -69,7 +70,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
         errInscription = new javax.swing.JLabel();
-        panBirthday = new javax.swing.JPanel();
+        panDate = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inscription");
@@ -183,19 +184,6 @@ public class InscriptionFrame extends javax.swing.JFrame {
         errInscription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errInscription.setText("Login or Password is incorrect");
 
-        panBirthday.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout panBirthdayLayout = new javax.swing.GroupLayout(panBirthday);
-        panBirthday.setLayout(panBirthdayLayout);
-        panBirthdayLayout.setHorizontalGroup(
-            panBirthdayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 207, Short.MAX_VALUE)
-        );
-        panBirthdayLayout.setVerticalGroup(
-            panBirthdayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 16, Short.MAX_VALUE)
-        );
-
         dekstop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -220,7 +208,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
         dekstop.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(btnCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(errInscription, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dekstop.setLayer(panBirthday, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(panDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dekstopLayout = new javax.swing.GroupLayout(dekstop);
         dekstop.setLayout(dekstopLayout);
@@ -256,8 +244,9 @@ public class InscriptionFrame extends javax.swing.JFrame {
                                         .addComponent(btnCancel))
                                     .addComponent(txfFirstname)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dekstopLayout.createSequentialGroup()
-                                        .addComponent(panBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(8, 8, 8)
+                                        .addComponent(panDate, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))))
                             .addGroup(dekstopLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -321,9 +310,9 @@ public class InscriptionFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(panBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(errBirthday))
-                .addGap(59, 59, 59)
+                    .addComponent(errBirthday)
+                    .addComponent(panDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addComponent(btnInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel)
@@ -506,7 +495,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel panBirthday;
+    private javax.swing.JPanel panDate;
     private javax.swing.JTextField txfAddress;
     private javax.swing.JTextField txfEmail;
     private javax.swing.JTextField txfFirstname;

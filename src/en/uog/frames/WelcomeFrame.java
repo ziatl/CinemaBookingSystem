@@ -35,11 +35,14 @@ public class WelcomeFrame extends javax.swing.JFrame {
         itemConnexion = new javax.swing.JMenuItem();
         itemExit = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        btnAddUser = new javax.swing.JMenuItem();
         itemListeUsers = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        btnAddMovie = new javax.swing.JMenuItem();
+        btnListMovies = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        btnAddRoom = new javax.swing.JMenuItem();
+        btnListRooms = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -72,13 +75,13 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         jMenu3.setText("Users");
 
-        jMenuItem3.setText("Add user");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        btnAddUser.setText("Add user");
+        btnAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                btnAddUserActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu3.add(btnAddUser);
 
         itemListeUsers.setText("List of users");
         itemListeUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -92,18 +95,33 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         jMenu1.setText("Movies");
 
-        jMenuItem1.setText("Add movie");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMovie.setText("Add movie");
+        btnAddMovie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnAddMovieActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(btnAddMovie);
 
-        jMenuItem2.setText("List of movies");
-        jMenu1.add(jMenuItem2);
+        btnListMovies.setText("List of movies");
+        jMenu1.add(btnListMovies);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu4.setText("Rooms");
+
+        btnAddRoom.setText("Add Room");
+        btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRoomActionPerformed(evt);
+            }
+        });
+        jMenu4.add(btnAddRoom);
+
+        btnListRooms.setText("List of Rooms");
+        jMenu4.add(btnListRooms);
+
+        jMenuBar1.add(jMenu4);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -120,7 +138,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -150,13 +168,21 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_itemListeUsersActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btnAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMovieActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btnAddMovieActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_btnAddUserActionPerformed
+
+    private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
+        // TODO add your handling code here:
+        desktop.removeAll();
+        IFAddMovie ifa = new IFAddMovie();
+        ifa.setVisible(true);
+        desktop.add(ifa);
+    }//GEN-LAST:event_btnAddRoomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,6 +223,11 @@ public class WelcomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnAddMovie;
+    private javax.swing.JMenuItem btnAddRoom;
+    private javax.swing.JMenuItem btnAddUser;
+    private javax.swing.JMenuItem btnListMovies;
+    private javax.swing.JMenuItem btnListRooms;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem itemConnexion;
     private javax.swing.JMenu itemDisconnect;
@@ -205,9 +236,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }

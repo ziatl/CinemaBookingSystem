@@ -5,17 +5,27 @@
  */
 package en.uog.frames;
 
+import java.util.Date;
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
+
 /**
  *
  * @author aziz
  */
 public class IFAddMovie extends javax.swing.JInternalFrame {
 
+     public static UtilDateModel model = new UtilDateModel();
+     public static JDatePanelImpl datePanel = new JDatePanelImpl(model);
+     public static JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
     /**
      * Creates new form IFAddMovie
      */
     public IFAddMovie() {
         initComponents();
+        model.setValue(new Date());
+        panDate.add(datePicker);
     }
 
     /**
@@ -27,15 +37,111 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktop = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        errLogin = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        errLogin1 = new javax.swing.JLabel();
+        txfAbstract = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        scrListe = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        panDate = new javax.swing.JPanel();
 
-        getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
+        desktop.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Apple Chancery", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 255, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Add  Movie");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        desktop.add(jLabel1);
+        jLabel1.setBounds(130, 10, 380, 30);
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel2.setText("Title :");
+        desktop.add(jLabel2);
+        jLabel2.setBounds(30, 40, 36, 16);
+        desktop.add(jTextField1);
+        jTextField1.setBounds(90, 40, 290, 26);
+
+        errLogin.setForeground(new java.awt.Color(255, 255, 51));
+        errLogin.setText("err login");
+        desktop.add(errLogin);
+        errLogin.setBounds(390, 40, 210, 16);
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel3.setText("Release date :");
+        desktop.add(jLabel3);
+        jLabel3.setBounds(50, 170, 120, 16);
+
+        errLogin1.setForeground(new java.awt.Color(255, 255, 51));
+        errLogin1.setText("err abstract");
+        desktop.add(errLogin1);
+        errLogin1.setBounds(390, 70, 210, 16);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        txfAbstract.setViewportView(jTextArea1);
+
+        desktop.add(txfAbstract);
+        txfAbstract.setBounds(90, 70, 290, 84);
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel4.setText("Abstract:");
+        desktop.add(jLabel4);
+        jLabel4.setBounds(16, 70, 70, 16);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setSize(new java.awt.Dimension(620, 64));
+        scrListe.setViewportView(jTable1);
+
+        desktop.add(scrListe);
+        scrListe.setBounds(10, 210, 627, 170);
+
+        jButton1.setText("Delete");
+        desktop.add(jButton1);
+        jButton1.setBounds(260, 390, 97, 29);
+        desktop.add(panDate);
+        panDate.setBounds(180, 170, 220, 30);
+
+        getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane desktop;
+    private javax.swing.JLabel errLogin;
+    private javax.swing.JLabel errLogin1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel panDate;
+    private javax.swing.JScrollPane scrListe;
+    private javax.swing.JScrollPane txfAbstract;
     // End of variables declaration//GEN-END:variables
 }

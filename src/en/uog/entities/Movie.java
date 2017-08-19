@@ -25,6 +25,7 @@ public class Movie {
     private String title;
     private String movieAbstract;
     private Date dateRelease;
+    private String image;
     
     //Database relations
     @OneToMany(mappedBy = "movie")
@@ -73,6 +74,15 @@ public class Movie {
 
     public Movie() {
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
 
     public Movie(String title, String movieAbstract, Date dateRelease) {
         this.title = title;

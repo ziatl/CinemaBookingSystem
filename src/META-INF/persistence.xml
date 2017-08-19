@@ -10,7 +10,7 @@
       <property name="hibernate.connection.url" value="jdbc:mysql://localhost:8889/cinema_booking?characterEncoding=UTF-8"/>
       <property name="hibernate.connection.username" value="root"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>

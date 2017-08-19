@@ -371,6 +371,8 @@ public class InscriptionFrame extends javax.swing.JFrame {
             //Set profile User
             Profile p = dao.findProfileByName("USER");
             user.setProfile(p);
+            Date selectDate = (Date) datePicker.getModel().getValue();
+            user.setBirthday(selectDate);
             dao.addUser(user);
             SendMail.SendEmail(txfFirstname.getText().trim(), txfEmail.getText().trim(), txfPassword.getText().trim().trim());
             this.dispose();

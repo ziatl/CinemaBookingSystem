@@ -5,7 +5,9 @@
  */
 package en.uog.dao;
 
+import en.uog.entities.Movie;
 import en.uog.entities.Profile;
+import en.uog.entities.Room;
 import en.uog.entities.User;
 import java.util.List;
 
@@ -22,6 +24,18 @@ public interface IBookingDao {
     public User login(String email, String password);
     public void delUser(User u);
     public Profile findProfileByName(String prof);
+    
+    //Movies
+    public Movie addMovie(Movie m);
+    public List<Movie> getAllMovies();
+    public Movie findMovieById(Integer id);
+    public void delMovie(Movie u);
+    
+    //Room
+    public Room addRoom(Room r);
+    public List<Room> getAllRoom();
+    public Room findRoomById(Integer id);
+    public void delRoom(Room r);
     
     
 }

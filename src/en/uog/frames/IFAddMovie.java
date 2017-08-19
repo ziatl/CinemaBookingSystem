@@ -5,7 +5,12 @@
  */
 package en.uog.frames;
 
+import en.uog.dao.BookingDaoImpl;
+import en.uog.dao.IBookingDao;
+import en.uog.entities.Movie;
+import en.uog.tablesmodel.AddMovieModel;
 import java.util.Date;
+import java.util.List;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -19,6 +24,11 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
      public static UtilDateModel model = new UtilDateModel();
      public static JDatePanelImpl datePanel = new JDatePanelImpl(model);
      public static JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+     
+     AddMovieModel movieModel = new AddMovieModel();
+     List<Movie> liste;
+     BookingDaoImpl dao;
+     
     /**
      * Creates new form IFAddMovie
      */
@@ -26,6 +36,13 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         initComponents();
         model.setValue(new Date());
         panDate.add(datePicker);
+        
+        tableMovie.setModel(movieModel);
+        dao = new BookingDaoImpl();
+        liste = dao.getAllMovies();
+        movieModel.LoadMovie(liste);
+        
+        
     }
 
     /**
@@ -40,17 +57,18 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txfTitle = new javax.swing.JTextField();
         errLogin = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         errLogin1 = new javax.swing.JLabel();
-        txfAbstract = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        scrollPane = new javax.swing.JScrollPane();
+        txfAbstract = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         scrListe = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tableMovie = new javax.swing.JTable();
+        btnDelete = new javax.swing.JButton();
         panDate = new javax.swing.JPanel();
+        btnAddMovie = new javax.swing.JButton();
 
         desktop.setLayout(null);
 
@@ -66,9 +84,9 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Title :");
         desktop.add(jLabel2);
-        jLabel2.setBounds(30, 40, 36, 16);
-        desktop.add(jTextField1);
-        jTextField1.setBounds(90, 40, 290, 26);
+        jLabel2.setBounds(50, 40, 36, 16);
+        desktop.add(txfTitle);
+        txfTitle.setBounds(90, 40, 290, 26);
 
         errLogin.setForeground(new java.awt.Color(255, 255, 51));
         errLogin.setText("err login");
@@ -86,12 +104,12 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(errLogin1);
         errLogin1.setBounds(390, 70, 210, 16);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        txfAbstract.setViewportView(jTextArea1);
+        txfAbstract.setColumns(20);
+        txfAbstract.setRows(5);
+        scrollPane.setViewportView(txfAbstract);
 
-        desktop.add(txfAbstract);
-        txfAbstract.setBounds(90, 70, 290, 84);
+        desktop.add(scrollPane);
+        scrollPane.setBounds(90, 70, 290, 84);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -99,7 +117,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(jLabel4);
         jLabel4.setBounds(16, 70, 70, 16);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableMovie.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,38 +128,60 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setSize(new java.awt.Dimension(620, 64));
-        scrListe.setViewportView(jTable1);
+        tableMovie.setSize(new java.awt.Dimension(620, 64));
+        scrListe.setViewportView(tableMovie);
 
         desktop.add(scrListe);
         scrListe.setBounds(10, 210, 627, 170);
 
-        jButton1.setText("Delete");
-        desktop.add(jButton1);
-        jButton1.setBounds(260, 390, 97, 29);
+        btnDelete.setText("Delete");
+        desktop.add(btnDelete);
+        btnDelete.setBounds(260, 390, 97, 29);
         desktop.add(panDate);
         panDate.setBounds(180, 170, 220, 30);
+
+        btnAddMovie.setText("Add movie");
+        btnAddMovie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMovieActionPerformed(evt);
+            }
+        });
+        desktop.add(btnAddMovie);
+        btnAddMovie.setBounds(450, 170, 110, 29);
 
         getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMovieActionPerformed
+        // TODO add your handling code here:
+        Movie movie = new Movie();
+        movie.setTitle(txfTitle.getText());
+        movie.setMovieAbstract(txfAbstract.getText());
+        Date selectDate = (Date) datePicker.getModel().getValue();
+        movie.setDateRelease(selectDate);
+        dao.addMovie(movie);
+        movieModel.LoadMovie(dao.getAllMovies());
+        tableMovie.setModel(movieModel);
+    }//GEN-LAST:event_btnAddMovieActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddMovie;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel errLogin;
     private javax.swing.JLabel errLogin1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panDate;
     private javax.swing.JScrollPane scrListe;
-    private javax.swing.JScrollPane txfAbstract;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTable tableMovie;
+    private javax.swing.JTextArea txfAbstract;
+    private javax.swing.JTextField txfTitle;
     // End of variables declaration//GEN-END:variables
 }

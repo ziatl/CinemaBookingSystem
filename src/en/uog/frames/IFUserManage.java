@@ -28,7 +28,7 @@ public class IFUserManage extends javax.swing.JInternalFrame {
         desktop.setSize(this.getSize());
         tableUser.setModel(userModel);
         BookingDaoImpl dao = new BookingDaoImpl();
-         liste = dao.getAllUsers();
+        liste = dao.getAllUsers();
         System.out.println(liste.size());
         userModel.loadUsers(liste);
         

@@ -6,7 +6,9 @@
 package en.uog.dao;
 
 import en.uog.database.PersistenceManager;
+import en.uog.entities.Movie;
 import en.uog.entities.Profile;
+import en.uog.entities.Room;
 import en.uog.entities.User;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -106,6 +108,83 @@ public class BookingDaoImpl implements IBookingDao{
             return null;
         }
     }
+    
+    //Movies
+
+    @Override
+    public Movie addMovie(Movie m) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(m);
+		et.commit();
+		em.close();
+        return m;
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT m from Movie m");
+        return q.getResultList();
+    }
+
+    @Override
+    public Movie findMovieById(Integer id) {
+        em = PersistenceManager.getEntityManager();
+        return em.find(Movie.class, id);
+    }
+
+    @Override
+    public void delMovie(Movie movie) {
+                EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(em.contains(movie) ? movie : em.merge(movie));
+		et.commit();
+		em.close();
+    }
+    
+    @Override
+    public Room addRoom(Room r) {
+         EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(r);
+		et.commit();
+		em.close();
+        return r;
+    }
+
+    @Override
+    public List<Room> getAllRoom() {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT m from Room m");
+        return q.getResultList();
+    }
+
+    @Override
+    public Room findRoomById(Integer id) {
+        em = PersistenceManager.getEntityManager();
+        return em.find(Room.class, id);
+    }
+
+    @Override
+    public void delRoom(Room r) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(em.contains(r) ? r : em.merge(r));
+		et.commit();
+		em.close();
+    }
+    
+    
+
+    
+    
     
     
     

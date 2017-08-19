@@ -34,6 +34,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         itemDisconnect = new javax.swing.JMenu();
         itemConnexion = new javax.swing.JMenuItem();
         itemExit = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         btnAddUser = new javax.swing.JMenuItem();
         itemListeUsers = new javax.swing.JMenuItem();
@@ -72,6 +73,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
         itemDisconnect.add(itemExit);
 
         jMenuBar1.add(itemDisconnect);
+
+        jMenu5.setText("Programs");
+        jMenuBar1.add(jMenu5);
 
         jMenu3.setText("Users");
 
@@ -170,6 +174,12 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
     private void btnAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMovieActionPerformed
         // TODO add your handling code here:
+        desktop.removeAll();
+        IFAddMovie ifa = new IFAddMovie();
+        ifa.setSize(desktop.getSize());
+        ifa.setVisible(true);
+        desktop.add(ifa);
+        
     }//GEN-LAST:event_btnAddMovieActionPerformed
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
@@ -179,7 +189,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
         // TODO add your handling code here:
         desktop.removeAll();
-        IFAddMovie ifa = new IFAddMovie();
+        IFAddRoom ifa = new IFAddRoom();
         ifa.setVisible(true);
         desktop.add(ifa);
     }//GEN-LAST:event_btnAddRoomActionPerformed
@@ -237,6 +247,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

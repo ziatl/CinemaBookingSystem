@@ -40,7 +40,7 @@ public class AddRoomModel extends AbstractTableModel {
     
     public void LoadRoom(List<Room> rooms){
          rows = new Vector<String[]>();
-         for(Room room:rooms){
+        for(Room room:rooms){
             rows.add(new String[]{""+room.getRoomId(),""+room.getNumberOfPlace()});
         }
         fireTableChanged(null);

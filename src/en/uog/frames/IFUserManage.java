@@ -115,6 +115,7 @@ public class IFUserManage extends javax.swing.JInternalFrame {
             dao = new BookingDaoImpl();
             userModel.loadUsers(dao.getAllUsers());
             tableUser.setModel(userModel);
+            liste.remove(tableUser.getSelectedRow());
         }else{
             System.err.println("Please select user before");
         }

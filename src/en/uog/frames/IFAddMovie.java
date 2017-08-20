@@ -9,6 +9,7 @@ import en.uog.dao.BookingDaoImpl;
 import en.uog.dao.IBookingDao;
 import en.uog.entities.Movie;
 import en.uog.tablesmodel.AddMovieModel;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
@@ -135,6 +136,11 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         scrListe.setBounds(10, 210, 627, 170);
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         desktop.add(btnDelete);
         btnDelete.setBounds(260, 390, 97, 29);
         desktop.add(panDate);
@@ -162,9 +168,27 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         Date selectDate = (Date) datePicker.getModel().getValue();
         movie.setDateRelease(selectDate);
         dao.addMovie(movie);
-        movieModel.LoadMovie(dao.getAllMovies());
+        dao = new BookingDaoImpl();
+        liste = new ArrayList<Movie>(dao.getAllMovies());
+        movieModel.LoadMovie(liste);
         tableMovie.setModel(movieModel);
     }//GEN-LAST:event_btnAddMovieActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        if (tableMovie.getSelectedRow() != -1) {
+            Movie movie = liste.get(tableMovie.getSelectedRow());
+            System.out.println(movie.getId());
+            dao = new BookingDaoImpl();
+            dao.delMovie(movie);
+            dao = new BookingDaoImpl();
+            liste = new ArrayList<Movie>(dao.getAllMovies());
+            movieModel.LoadMovie(liste);
+            tableMovie.setModel(movieModel);
+        }else{
+            System.err.println("Please select movie before");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

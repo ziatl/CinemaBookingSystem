@@ -9,6 +9,7 @@ import en.uog.dao.BookingDaoImpl;
 import en.uog.entities.Movie;
 import en.uog.entities.Room;
 import en.uog.tablesmodel.AddRoomModel;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,13 +50,13 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txfNumberOfPlace = new javax.swing.JTextField();
         errNumberPlace = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableRoom = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         getContentPane().setLayout(new java.awt.GridLayout(2, 1));
 
@@ -97,14 +98,14 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
         jDesktopPane3.add(errNumberPlace);
         errNumberPlace.setBounds(310, 80, 210, 16);
 
-        jButton2.setText("Add Room");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setText("Add Room");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
-        jDesktopPane3.add(jButton2);
-        jButton2.setBounds(250, 130, 97, 29);
+        jDesktopPane3.add(btnAdd);
+        btnAdd.setBounds(250, 130, 97, 29);
 
         jPanel1.add(jDesktopPane3, java.awt.BorderLayout.CENTER);
 
@@ -129,10 +130,10 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
 
         jDesktopPane2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -142,14 +143,14 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnDelete)
                 .addGap(88, 88, 88))
         );
 
@@ -162,11 +163,23 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (tableRoom.getSelectedRow() != -1) {
+            Room room = liste.get(tableRoom.getSelectedRow());
+            System.out.println(room.getId());
+            dao = new BookingDaoImpl();
+            dao.delRoom(room);
+            dao = new BookingDaoImpl();
+            liste = new ArrayList<Room>(dao.getAllRoom());
+            roomModel.LoadRoom(liste);
+            tableRoom.setModel(roomModel);
+        }else{
+            System.err.println("Please select room before");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         Room room = new Room();
         room.setRoomId(txfRoomId.getText());
@@ -174,16 +187,18 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
         
         dao = new BookingDaoImpl();
         dao.addRoom(room);
-        roomModel.LoadRoom(dao.getAllRoom());
+        dao = new BookingDaoImpl();
+        liste = new ArrayList<Room>(dao.getAllRoom());
+        roomModel.LoadRoom(liste);
         tableRoom.setModel(roomModel);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JLabel errNumberPlace;
     private javax.swing.JLabel errRoomId;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
     private javax.swing.JLabel jLabel1;

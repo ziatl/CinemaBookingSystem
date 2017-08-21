@@ -132,7 +132,7 @@ public class IFProgrammScreen extends javax.swing.JInternalFrame {
         errDate = new javax.swing.JLabel();
         errTime = new javax.swing.JLabel();
 
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jDesktopPane1.setLayout(null);
 

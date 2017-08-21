@@ -8,9 +8,14 @@ package en.uog.frames;
 import en.uog.dao.BookingDaoImpl;
 import en.uog.entities.Movie;
 import en.uog.tablesmodel.AddMovieModel;
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -44,6 +49,14 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         
         
     }
+    
+    public ImageIcon reseizeImgae(String imagePath){
+        ImageIcon myImg = new ImageIcon(imagePath);
+        Image img = myImg.getImage();
+        Image newImg = img.getScaledInstance(imgMoovie.getWidth(), imgMoovie.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;  
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +82,10 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         btnDelete = new javax.swing.JButton();
         panDate = new javax.swing.JPanel();
         btnAddMovie = new javax.swing.JButton();
+        btnAddImage = new javax.swing.JButton();
+        imgMoovie = new javax.swing.JLabel();
+
+        getContentPane().setLayout(new java.awt.GridLayout());
 
         desktop.setLayout(null);
 
@@ -102,7 +119,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         errLogin1.setForeground(new java.awt.Color(255, 255, 51));
         errLogin1.setText("err abstract");
         desktop.add(errLogin1);
-        errLogin1.setBounds(390, 70, 210, 16);
+        errLogin1.setBounds(390, 70, 140, 16);
 
         txfAbstract.setColumns(20);
         txfAbstract.setRows(5);
@@ -132,7 +149,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         scrListe.setViewportView(tableMovie);
 
         desktop.add(scrListe);
-        scrListe.setBounds(10, 210, 627, 170);
+        scrListe.setBounds(10, 210, 630, 170);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +171,21 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(btnAddMovie);
         btnAddMovie.setBounds(450, 170, 110, 29);
 
-        getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
+        btnAddImage.setText("load image");
+        btnAddImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddImageActionPerformed(evt);
+            }
+        });
+        desktop.add(btnAddImage);
+        btnAddImage.setBounds(530, 130, 113, 29);
+
+        imgMoovie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgMoovie.setText("jLabel5");
+        desktop.add(imgMoovie);
+        imgMoovie.setBounds(540, 40, 80, 80);
+
+        getContentPane().add(desktop);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,14 +220,34 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jf = new JFileChooser();
+        jf.setCurrentDirectory(new File(System.getProperty("user.home")));
+        FileNameExtensionFilter filter =  new FileNameExtensionFilter("*.Images","jpg","jpeg","tiff","gift","png");
+        jf.addChoosableFileFilter(filter);
+        int result = jf.showSaveDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION){
+            File selectedFile = jf.getSelectedFile();
+            String path = selectedFile.getAbsolutePath();
+            imgMoovie.setIcon(reseizeImgae(path));
+        }else if (result == JFileChooser.CANCEL_OPTION){
+            System.out.println("No file select");
+        }
+            
+        
+    }//GEN-LAST:event_btnAddImageActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddImage;
     private javax.swing.JButton btnAddMovie;
     private javax.swing.JButton btnDelete;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel errLogin;
     private javax.swing.JLabel errLogin1;
+    private javax.swing.JLabel imgMoovie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

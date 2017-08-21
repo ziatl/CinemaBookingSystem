@@ -163,7 +163,7 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
             if(this.login() != null){
           
                 this.dispose();
-                WelcomeFrame wf = new WelcomeFrame();
+                WelcomeFrame wf = new WelcomeFrame(login());
                 wf.setVisible(true);
             }else{
                 this.errConnexion.setText("Login or Password is incorrect");

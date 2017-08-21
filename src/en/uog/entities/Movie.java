@@ -29,13 +29,13 @@ public class Movie {
     
     //Database relations
     @OneToMany(mappedBy = "movie")
-    private List<OnScreem> onScreems;
+    private List<OnScreen> onScreems;
 
-    public List<OnScreem> getOnScreems() {
+    public List<OnScreen> getOnScreems() {
         return onScreems;
     }
 
-    public void setOnScreems(List<OnScreem> onScreems) {
+    public void setOnScreems(List<OnScreen> onScreems) {
         this.onScreems = onScreems;
     }
    

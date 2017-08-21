@@ -7,6 +7,7 @@ package en.uog.dao;
 
 import en.uog.database.PersistenceManager;
 import en.uog.entities.Movie;
+import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
 import en.uog.entities.Room;
 import en.uog.entities.User;
@@ -177,6 +178,41 @@ public class BookingDaoImpl implements IBookingDao{
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		em.remove(em.contains(r) ? r : em.merge(r));
+		et.commit();
+		em.close();
+    }
+
+    @Override
+    public OnScreen addOnScreen(OnScreen onScreen) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(onScreen);
+		et.commit();
+		em.close();
+        return onScreen;
+    }
+
+    @Override
+    public List<OnScreen> getAllOnScreen() {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT m from OnScreen m");
+        return q.getResultList();
+    }
+
+    @Override
+    public OnScreen findOnScreenById(Integer id) {
+         em = PersistenceManager.getEntityManager();
+        return em.find(OnScreen.class, id);
+    }
+
+    @Override
+    public void delonScreen(OnScreen onScreen) {
+         EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(em.contains(onScreen) ? onScreen : em.merge(onScreen));
 		et.commit();
 		em.close();
     }

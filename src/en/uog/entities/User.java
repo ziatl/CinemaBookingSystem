@@ -38,7 +38,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<MakePayment> makePayments;
     @OneToMany(mappedBy = "user")
-    private List<OnScreem> onScreems;
+    private List<OnScreen> onScreems;
     @ManyToOne
     @JoinColumn(name = "idProfile")
     private Profile profile;
@@ -59,11 +59,11 @@ public class User {
         this.makePayments = makePayments;
     }
 
-    public List<OnScreem> getOnScreems() {
+    public List<OnScreen> getOnScreems() {
         return onScreems;
     }
 
-    public void setOnScreems(List<OnScreem> onScreems) {
+    public void setOnScreems(List<OnScreen> onScreems) {
         this.onScreems = onScreems;
     }
 

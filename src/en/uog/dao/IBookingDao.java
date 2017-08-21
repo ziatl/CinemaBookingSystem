@@ -6,6 +6,7 @@
 package en.uog.dao;
 
 import en.uog.entities.Movie;
+import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
 import en.uog.entities.Room;
 import en.uog.entities.User;
@@ -36,6 +37,12 @@ public interface IBookingDao {
     public List<Room> getAllRoom();
     public Room findRoomById(Integer id);
     public void delRoom(Room r);
+    
+    //OnScreen
+    public OnScreen addOnScreen(OnScreen onScreen);
+    public List<OnScreen> getAllOnScreen();
+    public OnScreen findOnScreenById(Integer id);
+    public void delonScreen(OnScreen onScreen);
     
     
 }

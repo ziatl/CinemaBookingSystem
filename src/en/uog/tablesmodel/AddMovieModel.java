@@ -6,8 +6,10 @@
 package en.uog.tablesmodel;
 
 import en.uog.entities.Movie;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
+
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -42,8 +44,9 @@ public class AddMovieModel extends AbstractTableModel{
     
     public void LoadMovie(List<Movie> movies){
         rows = new Vector<String[]>();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         for(Movie movie:movies){
-            rows.add(new String[]{movie.getTitle(),movie.getMovieAbstract(),movie.getDateRelease().toString()});
+            rows.add(new String[]{movie.getTitle(),movie.getMovieAbstract(),sdf.format(movie.getDateRelease())});
         }
         fireTableChanged(null);
     }

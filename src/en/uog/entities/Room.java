@@ -26,13 +26,13 @@ public class Room {
     
     // Database relations
     @OneToMany(mappedBy = "room")
-    private List<OnScreem> onScreem;
+    private List<OnScreen> onScreem;
 
-    public List<OnScreem> getOnScreem() {
+    public List<OnScreen> getOnScreem() {
         return onScreem;
     }
 
-    public void setOnScreem(List<OnScreem> onScreem) {
+    public void setOnScreem(List<OnScreen> onScreem) {
         this.onScreem = onScreem;
     }
    

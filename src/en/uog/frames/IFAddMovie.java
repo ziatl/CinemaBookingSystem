@@ -6,7 +6,6 @@
 package en.uog.frames;
 
 import en.uog.dao.BookingDaoImpl;
-import en.uog.dao.IBookingDao;
 import en.uog.entities.Movie;
 import en.uog.tablesmodel.AddMovieModel;
 import java.util.ArrayList;
@@ -190,6 +189,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddMovie;

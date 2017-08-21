@@ -36,7 +36,7 @@ public class BookTicket {
 
     @ManyToOne
     @JoinColumn(name = "idOnScreem")
-    private OnScreem onScreem;
+    private OnScreen onScreem;
 
     public User getUser() {
         return user;
@@ -46,11 +46,11 @@ public class BookTicket {
         this.user = user;
     }
 
-    public OnScreem getOnScreem() {
+    public OnScreen getOnScreem() {
         return onScreem;
     }
 
-    public void setOnScreem(OnScreem onScreem) {
+    public void setOnScreem(OnScreen onScreem) {
         this.onScreem = onScreem;
     }
     

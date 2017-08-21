@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
  * @author faycal
  */
 @Entity
-public class OnScreem {
+public class OnScreen {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -107,10 +107,10 @@ public class OnScreem {
         this.price = price;
     }
 
-    public OnScreem() {
+    public OnScreen() {
     }
 
-    public OnScreem(Date movieDate, double price) {
+    public OnScreen(Date movieDate, double price) {
         this.movieDate = movieDate;
         this.price = price;
     }

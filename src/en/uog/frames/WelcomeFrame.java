@@ -5,17 +5,21 @@
  */
 package en.uog.frames;
 
+import en.uog.entities.User;
+
 /**
  *
  * @author faycal
  */
 public class WelcomeFrame extends javax.swing.JFrame {
 
+    static User currentuser = new User();
     /**
      * Creates new form AccueilPanel
      */
-    public WelcomeFrame() {
+    public WelcomeFrame(User user) {
         initComponents();
+        currentuser = user;
         this.setLocationRelativeTo(null);
         
     }
@@ -35,6 +39,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         itemConnexion = new javax.swing.JMenuItem();
         itemExit = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         btnAddUser = new javax.swing.JMenuItem();
         itemListeUsers = new javax.swing.JMenuItem();
@@ -75,6 +80,15 @@ public class WelcomeFrame extends javax.swing.JFrame {
         jMenuBar1.add(itemDisconnect);
 
         jMenu5.setText("Programs");
+
+        jMenuItem1.setText("Add Program");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem1);
+
         jMenuBar1.add(jMenu5);
 
         jMenu3.setText("Users");
@@ -194,6 +208,14 @@ public class WelcomeFrame extends javax.swing.JFrame {
         desktop.add(ifa);
     }//GEN-LAST:event_btnAddRoomActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        desktop.removeAll();
+        IFProgrammScreen ifp = new IFProgrammScreen(currentuser);
+        ifp.setVisible(true);
+        desktop.add(ifp);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,7 +249,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WelcomeFrame().setVisible(true);
+                new WelcomeFrame(currentuser).setVisible(true);
             }
         });
     }
@@ -249,5 +271,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

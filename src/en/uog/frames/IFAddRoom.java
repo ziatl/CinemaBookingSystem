@@ -26,10 +26,41 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
      */
     public IFAddRoom() {
         initComponents();
+        initErr();
         tableRoom.setModel(roomModel);
         dao = new BookingDaoImpl();
         liste = dao.getAllRoom();
         roomModel.LoadRoom(liste);
+    }
+    
+    public void initErr(){
+       errRoomId.setText("");
+       errNumberPlace.setText("");
+    }
+    boolean validation = true; 
+    public boolean validation(){
+        initErr();
+        if (txfNumberOfPlace.getText().equals("")){
+            errNumberPlace.setText("set a valid value");
+        }else {
+            try {
+                Integer.parseInt(txfNumberOfPlace.getText());
+                if (Integer.parseInt(txfNumberOfPlace.getText())<=0) {  
+                    errNumberPlace.setText("set a valid value");
+                    validation = false;
+                }
+            } catch (Exception e) {
+                errNumberPlace.setText("set a valid value");
+                validation = false;
+            }
+        }
+        
+         if (txfRoomId.getText().equals("")){
+            errRoomId.setText("set a valid value");
+            validation = false;
+        }
+        
+        return validation;
     }
 
     /**
@@ -67,7 +98,7 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Apple Chancery", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 255, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Add  Movie");
+        jLabel1.setText("Add  Room");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jDesktopPane3.add(jLabel1);
         jLabel1.setBounds(130, 10, 380, 30);
@@ -181,16 +212,18 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        Room room = new Room();
-        room.setRoomId(txfRoomId.getText());
-        room.setNumberOfPlace(Integer.parseInt(txfNumberOfPlace.getText()));
-        
-        dao = new BookingDaoImpl();
-        dao.addRoom(room);
-        dao = new BookingDaoImpl();
-        liste = new ArrayList<Room>(dao.getAllRoom());
-        roomModel.LoadRoom(liste);
-        tableRoom.setModel(roomModel);
+        if (validation()) {
+            Room room = new Room();
+            room.setRoomId(txfRoomId.getText());
+            room.setNumberOfPlace(Integer.parseInt(txfNumberOfPlace.getText()));
+
+            dao = new BookingDaoImpl();
+            dao.addRoom(room);
+            dao = new BookingDaoImpl();
+            liste = new ArrayList<Room>(dao.getAllRoom());
+            roomModel.LoadRoom(liste);
+            tableRoom.setModel(roomModel);   
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
 

@@ -25,7 +25,7 @@ public class IFListeScreen extends javax.swing.JInternalFrame {
     public IFListeScreen() {
         initComponents();
         tableScreen.setModel(screenModel);
-        BookingDaoImpl dao = new BookingDaoImpl();
+         dao = new BookingDaoImpl();
         liste = dao.getAllOnScreen();
         screenModel.LoadScreen(liste);
     }
@@ -69,7 +69,13 @@ public class IFListeScreen extends javax.swing.JInternalFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jButton1.setText("jButton1");
+        jButton1.setForeground(new java.awt.Color(255, 0, 51));
+        jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, java.awt.BorderLayout.PAGE_END);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -87,6 +93,25 @@ public class IFListeScreen extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (tableScreen.getSelectedRow() != -1) {
+            OnScreen onScreen = liste.get(tableScreen.getSelectedRow());
+            dao = new BookingDaoImpl();
+            dao.delonScreen(onScreen);
+            liste.remove(tableScreen.getSelectedRow());
+            dao = new BookingDaoImpl();
+            screenModel = new ScreenModel();
+            dao = new BookingDaoImpl();
+            screenModel.LoadScreen(liste);
+            tableScreen.removeAll();
+            tableScreen.setModel(screenModel);
+            
+        }else{
+            System.err.println("Please select user before");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

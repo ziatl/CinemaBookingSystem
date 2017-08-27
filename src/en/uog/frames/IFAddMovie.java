@@ -9,10 +9,12 @@ import en.uog.dao.BookingDaoImpl;
 import en.uog.entities.Movie;
 import en.uog.tablesmodel.AddMovieModel;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -33,6 +35,8 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
      AddMovieModel movieModel = new AddMovieModel();
      List<Movie> liste;
      BookingDaoImpl dao;
+     String imageName = "";
+
      
     /**
      * Creates new form IFAddMovie
@@ -46,17 +50,42 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         dao = new BookingDaoImpl();
         liste = dao.getAllMovies();
         movieModel.LoadMovie(liste);
+        initErr();
         
+    }
+    public void initErr(){
+        errTtile.setText("");
+        errAbstract.setText("");
+        errDate.setText("");
+        errImage.setText("");
+    }
+    
+    boolean validation = true;
+    public boolean validation(){
+        if (txfTitle.getText().equals("")) {
+            validation = false;
+            errTtile.setText("Set a valid value");
+        }
         
+        if (txfAbstract.getText().equals("")) {
+            validation = false;
+            errTtile.setText("Set a valid value"); 
+        }
+        
+ 
+        return validation;
     }
     
     public ImageIcon reseizeImgae(String imagePath){
         ImageIcon myImg = new ImageIcon(imagePath);
+        
         Image img = myImg.getImage();
         Image newImg = img.getScaledInstance(imgMoovie.getWidth(), imgMoovie.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;  
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,9 +100,9 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txfTitle = new javax.swing.JTextField();
-        errLogin = new javax.swing.JLabel();
+        errTtile = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        errLogin1 = new javax.swing.JLabel();
+        errDate = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         txfAbstract = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
@@ -84,8 +113,10 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         btnAddMovie = new javax.swing.JButton();
         btnAddImage = new javax.swing.JButton();
         imgMoovie = new javax.swing.JLabel();
+        errAbstract = new javax.swing.JLabel();
+        errImage = new javax.swing.JLabel();
 
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         desktop.setLayout(null);
 
@@ -105,10 +136,10 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(txfTitle);
         txfTitle.setBounds(90, 40, 290, 26);
 
-        errLogin.setForeground(new java.awt.Color(255, 255, 51));
-        errLogin.setText("err login");
-        desktop.add(errLogin);
-        errLogin.setBounds(390, 40, 210, 16);
+        errTtile.setForeground(new java.awt.Color(255, 255, 51));
+        errTtile.setText("err title");
+        desktop.add(errTtile);
+        errTtile.setBounds(390, 40, 210, 16);
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -116,10 +147,10 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(jLabel3);
         jLabel3.setBounds(50, 170, 120, 16);
 
-        errLogin1.setForeground(new java.awt.Color(255, 255, 51));
-        errLogin1.setText("err abstract");
-        desktop.add(errLogin1);
-        errLogin1.setBounds(390, 70, 140, 16);
+        errDate.setForeground(new java.awt.Color(255, 255, 51));
+        errDate.setText("err abstract");
+        desktop.add(errDate);
+        errDate.setBounds(390, 140, 140, 16);
 
         txfAbstract.setColumns(20);
         txfAbstract.setRows(5);
@@ -185,6 +216,17 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(imgMoovie);
         imgMoovie.setBounds(540, 40, 80, 80);
 
+        errAbstract.setForeground(new java.awt.Color(255, 255, 51));
+        errAbstract.setText("err abstract");
+        desktop.add(errAbstract);
+        errAbstract.setBounds(390, 70, 140, 16);
+
+        errImage.setForeground(new java.awt.Color(255, 255, 51));
+        errImage.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        errImage.setText("err image");
+        desktop.add(errImage);
+        errImage.setBounds(390, 90, 140, 16);
+
         getContentPane().add(desktop);
 
         pack();
@@ -245,8 +287,10 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAddMovie;
     private javax.swing.JButton btnDelete;
     private javax.swing.JDesktopPane desktop;
-    private javax.swing.JLabel errLogin;
-    private javax.swing.JLabel errLogin1;
+    private javax.swing.JLabel errAbstract;
+    private javax.swing.JLabel errDate;
+    private javax.swing.JLabel errImage;
+    private javax.swing.JLabel errTtile;
     private javax.swing.JLabel imgMoovie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,9 +5,7 @@
  */
 package en.uog.tablesmodel;
 
-import en.uog.dao.ValidationProvider;
 import en.uog.entities.OnScreen;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
@@ -18,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ScreenModel extends AbstractTableModel {
 
-    public String[] columsName = new String[]{"Room Id","Moovie","Date","Time","Price"};
+    public String[] columsName = new String[]{"Room Id","Moovie","Date","Price"};
     private Vector<String[]> rows = new Vector<String[]>();
 
     @Override
@@ -43,14 +41,14 @@ public class ScreenModel extends AbstractTableModel {
     }
     public void LoadScreen(List<OnScreen> screens){
          rows = new Vector<String[]>();
-          SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMMM yyyy");
-          screens.forEach((screen) -> {
-              rows.add(new String[]{""
+          for (OnScreen screen : screens) {
+            rows.add(new String[]{""
                       +""+screen.getRoom().getRoomId(),
-                  ""+screen.getMovie().getTitle()
-                          +""+sdf.format(screen.getMovieDate())
+                       ""+screen.getMovie().getTitle(),
+                         ""+screen.getMovieDate(),
+                        ""+screen.getPrice()
               });
-        });
+        }
         fireTableChanged(null);
     }
     

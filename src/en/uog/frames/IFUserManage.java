@@ -104,17 +104,19 @@ public class IFUserManage extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:       
         if (tableUser.getSelectedRow() != -1) {
             User user = liste.get(tableUser.getSelectedRow());
-            System.out.println(user.getId());
             dao = new BookingDaoImpl();
             dao.delUser(user);
-            dao = new BookingDaoImpl();
-            userModel.loadUsers(dao.getAllUsers());
-            tableUser.setModel(userModel);
             liste.remove(tableUser.getSelectedRow());
+            dao = new BookingDaoImpl();
+            userModel = new UserModel();
+            dao = new BookingDaoImpl();
+            userModel.loadUsers(liste);
+            tableUser.removeAll();
+            tableUser.setModel(userModel);
+            
         }else{
             System.err.println("Please select user before");
         }

@@ -6,14 +6,20 @@
 package en.uog.frames;
 
 import en.uog.dao.BookingDaoImpl;
+import en.uog.dao.ValidationProvider;
 import en.uog.entities.Movie;
 import en.uog.tablesmodel.AddMovieModel;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -75,16 +81,22 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
  
         return validation;
     }
-    
+    ImageIcon imageCour = null;
     public ImageIcon reseizeImgae(String imagePath){
         ImageIcon myImg = new ImageIcon(imagePath);
         
         Image img = myImg.getImage();
         Image newImg = img.getScaledInstance(imgMoovie.getWidth(), imgMoovie.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
+        imageCour = image;
         return image;  
     }
-    
+    public void saveImage(ImageIcon imageIco) throws IOException{
+        
+        File file = new File(imageName);
+        BufferedImage bf = new BufferedImage(imageIco.getIconWidth(), imageIco.getIconHeight(), BufferedImage.TYPE_INT_RGB);
+        ImageIO.write(bf, "jpeg", file);    
+    }
     
 
     /**
@@ -234,16 +246,27 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
 
     private void btnAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMovieActionPerformed
         // TODO add your handling code here:
-        Movie movie = new Movie();
-        movie.setTitle(txfTitle.getText());
-        movie.setMovieAbstract(txfAbstract.getText());
-        Date selectDate = (Date) datePicker.getModel().getValue();
-        movie.setDateRelease(selectDate);
-        dao.addMovie(movie);
-        dao = new BookingDaoImpl();
-        liste = new ArrayList<Movie>(dao.getAllMovies());
-        movieModel.LoadMovie(liste);
-        tableMovie.setModel(movieModel);
+        if (validation()) {
+            Movie movie = new Movie();
+            movie.setTitle(txfTitle.getText());
+            movie.setMovieAbstract(txfAbstract.getText());
+            Date selectDate = (Date) datePicker.getModel().getValue();
+            movie.setDateRelease(selectDate);
+            if (imageCour!=null) {
+//                try {
+//                    saveImage(imageCour);
+//                } catch (IOException ex) {
+//                    System.err.println("Errer enregistrement image");
+//                }
+                movie.setImage(imageName);
+            }
+            
+            dao.addMovie(movie);
+            dao = new BookingDaoImpl();
+            liste = new ArrayList<Movie>(dao.getAllMovies());
+            movieModel.LoadMovie(liste);
+            tableMovie.setModel(movieModel);           
+        }
     }//GEN-LAST:event_btnAddMovieActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -272,6 +295,8 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         if (result == JFileChooser.APPROVE_OPTION){
             File selectedFile = jf.getSelectedFile();
             String path = selectedFile.getAbsolutePath();
+            imageName = selectedFile.getName();
+            System.err.println(ValidationProvider.generateImageName()+imageName);
             imgMoovie.setIcon(reseizeImgae(path));
         }else if (result == JFileChooser.CANCEL_OPTION){
             System.out.println("No file select");

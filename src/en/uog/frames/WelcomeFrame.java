@@ -6,6 +6,7 @@
 package en.uog.frames;
 
 import en.uog.entities.User;
+import en.uog.frames.clients.IFViewPrograms;
 
 /**
  *
@@ -21,7 +22,24 @@ public class WelcomeFrame extends javax.swing.JFrame {
         initComponents();
         currentuser = user;
         this.setLocationRelativeTo(null);
+        if(currentuser.getProfile().getProfileName().equals("USER")){
+            hideUser();
+        }else{
+            hideAdmin();
+        }
         
+    }
+    public void hideUser(){
+         meneBar.remove(menuRooms);
+         meneBar.remove(itemMovie);
+         itemMovie.remove(itemAddMovie);
+         itemProgram.remove(itemListProgram);
+         itemProgram.remove(itemAddProgram);
+         meneBar.remove(itemUsers);
+    }
+    
+    public void hideAdmin(){
+        meneBar.remove(itemViewProgram);
     }
 
     /**
@@ -34,20 +52,21 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         desktop = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        meneBar = new javax.swing.JMenuBar();
         itemDisconnect = new javax.swing.JMenu();
         itemConnexion = new javax.swing.JMenuItem();
         itemExit = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        itemProgram = new javax.swing.JMenu();
+        itemAddProgram = new javax.swing.JMenuItem();
+        itemListProgram = new javax.swing.JMenuItem();
+        itemViewProgram = new javax.swing.JMenuItem();
+        itemUsers = new javax.swing.JMenu();
         btnAddUser = new javax.swing.JMenuItem();
-        itemListeUsers = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        btnAddMovie = new javax.swing.JMenuItem();
-        btnListMovies = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        itemListUsers = new javax.swing.JMenuItem();
+        itemMovie = new javax.swing.JMenu();
+        itemAddMovie = new javax.swing.JMenuItem();
+        itemListMovie = new javax.swing.JMenuItem();
+        menuRooms = new javax.swing.JMenu();
         btnAddRoom = new javax.swing.JMenuItem();
         btnListRooms = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -78,29 +97,37 @@ public class WelcomeFrame extends javax.swing.JFrame {
         });
         itemDisconnect.add(itemExit);
 
-        jMenuBar1.add(itemDisconnect);
+        meneBar.add(itemDisconnect);
 
-        jMenu5.setText("Programs");
+        itemProgram.setText("Programs");
 
-        jMenuItem1.setText("Add Program");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemAddProgram.setText("Add Program");
+        itemAddProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemAddProgramActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        itemProgram.add(itemAddProgram);
 
-        jMenuItem2.setText("List Programs");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itemListProgram.setText("List Programs");
+        itemListProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itemListProgramActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        itemProgram.add(itemListProgram);
 
-        jMenuBar1.add(jMenu5);
+        itemViewProgram.setText("View Programs");
+        itemViewProgram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemViewProgramActionPerformed(evt);
+            }
+        });
+        itemProgram.add(itemViewProgram);
 
-        jMenu3.setText("Users");
+        meneBar.add(itemProgram);
+
+        itemUsers.setText("Users");
 
         btnAddUser.setText("Add user");
         btnAddUser.addActionListener(new java.awt.event.ActionListener() {
@@ -108,34 +135,34 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 btnAddUserActionPerformed(evt);
             }
         });
-        jMenu3.add(btnAddUser);
+        itemUsers.add(btnAddUser);
 
-        itemListeUsers.setText("List of users");
-        itemListeUsers.addActionListener(new java.awt.event.ActionListener() {
+        itemListUsers.setText("List of users");
+        itemListUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemListeUsersActionPerformed(evt);
+                itemListUsersActionPerformed(evt);
             }
         });
-        jMenu3.add(itemListeUsers);
+        itemUsers.add(itemListUsers);
 
-        jMenuBar1.add(jMenu3);
+        meneBar.add(itemUsers);
 
-        jMenu1.setText("Movies");
+        itemMovie.setText("Movies");
 
-        btnAddMovie.setText("Add movie");
-        btnAddMovie.addActionListener(new java.awt.event.ActionListener() {
+        itemAddMovie.setText("Add movie");
+        itemAddMovie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddMovieActionPerformed(evt);
+                itemAddMovieActionPerformed(evt);
             }
         });
-        jMenu1.add(btnAddMovie);
+        itemMovie.add(itemAddMovie);
 
-        btnListMovies.setText("List of movies");
-        jMenu1.add(btnListMovies);
+        itemListMovie.setText("List of movies");
+        itemMovie.add(itemListMovie);
 
-        jMenuBar1.add(jMenu1);
+        meneBar.add(itemMovie);
 
-        jMenu4.setText("Rooms");
+        menuRooms.setText("Rooms");
 
         btnAddRoom.setText("Add Room");
         btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
@@ -143,17 +170,17 @@ public class WelcomeFrame extends javax.swing.JFrame {
                 btnAddRoomActionPerformed(evt);
             }
         });
-        jMenu4.add(btnAddRoom);
+        menuRooms.add(btnAddRoom);
 
         btnListRooms.setText("List of Rooms");
-        jMenu4.add(btnListRooms);
+        menuRooms.add(btnListRooms);
 
-        jMenuBar1.add(jMenu4);
+        meneBar.add(menuRooms);
 
         jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        meneBar.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(meneBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,7 +211,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_itemExitActionPerformed
 
-    private void itemListeUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListeUsersActionPerformed
+    private void itemListUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListUsersActionPerformed
 
            // TODO add your handling code here:
         desktop.removeAll();
@@ -193,9 +220,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
         ifu.setVisible(true);
         desktop.add(ifu);
 
-    }//GEN-LAST:event_itemListeUsersActionPerformed
+    }//GEN-LAST:event_itemListUsersActionPerformed
 
-    private void btnAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMovieActionPerformed
+    private void itemAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddMovieActionPerformed
         // TODO add your handling code here:
         desktop.removeAll();
         IFAddMovie ifa = new IFAddMovie();
@@ -203,7 +230,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         ifa.setVisible(true);
         desktop.add(ifa);
         
-    }//GEN-LAST:event_btnAddMovieActionPerformed
+    }//GEN-LAST:event_itemAddMovieActionPerformed
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
@@ -217,21 +244,29 @@ public class WelcomeFrame extends javax.swing.JFrame {
         desktop.add(ifa);
     }//GEN-LAST:event_btnAddRoomActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemAddProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddProgramActionPerformed
         // TODO add your handling code here:
         desktop.removeAll();
         IFProgrammScreen ifp = new IFProgrammScreen(currentuser);
         ifp.setVisible(true);
         desktop.add(ifp);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itemAddProgramActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itemListProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListProgramActionPerformed
         // TODO add your handling code here:
         desktop.removeAll();
         IFListeScreen ifp = new IFListeScreen();
         ifp.setVisible(true);
         desktop.add(ifp);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itemListProgramActionPerformed
+
+    private void itemViewProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemViewProgramActionPerformed
+        // TODO add your handling code here:
+        desktop.removeAll();
+        IFViewPrograms ifv = new IFViewPrograms(currentuser);
+        ifv.setVisible(true);
+        desktop.add(ifv);
+    }//GEN-LAST:event_itemViewProgramActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,23 +307,24 @@ public class WelcomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btnAddMovie;
     private javax.swing.JMenuItem btnAddRoom;
     private javax.swing.JMenuItem btnAddUser;
-    private javax.swing.JMenuItem btnListMovies;
     private javax.swing.JMenuItem btnListRooms;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenuItem itemAddMovie;
+    private javax.swing.JMenuItem itemAddProgram;
     private javax.swing.JMenuItem itemConnexion;
     private javax.swing.JMenu itemDisconnect;
     private javax.swing.JMenuItem itemExit;
-    private javax.swing.JMenuItem itemListeUsers;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem itemListMovie;
+    private javax.swing.JMenuItem itemListProgram;
+    private javax.swing.JMenuItem itemListUsers;
+    private javax.swing.JMenu itemMovie;
+    private javax.swing.JMenu itemProgram;
+    private javax.swing.JMenu itemUsers;
+    private javax.swing.JMenuItem itemViewProgram;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuBar meneBar;
+    private javax.swing.JMenu menuRooms;
     // End of variables declaration//GEN-END:variables
 }

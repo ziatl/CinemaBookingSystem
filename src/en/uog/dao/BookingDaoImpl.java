@@ -44,8 +44,6 @@ public class BookingDaoImpl implements IBookingDao{
         q = em.createQuery("SELECT u from User u where u.email=:x and u.password=:y");
         q.setParameter("x",email);
         q.setParameter("y",password);
-        System.out.println(email);
-        System.out.println(password);
         try {
             User user = (User) q.getSingleResult();
             System.out.println(user);

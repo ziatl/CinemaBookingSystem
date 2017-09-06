@@ -5,6 +5,7 @@
  */
 package en.uog.dao;
 
+import en.uog.entities.BookTicket;
 import en.uog.entities.Movie;
 import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
@@ -43,6 +44,13 @@ public interface IBookingDao {
     public List<OnScreen> getAllOnScreen();
     public OnScreen findOnScreenById(Integer id);
     public void delonScreen(OnScreen onScreen);
+    
+    
+    //BoolTicket
+    public BookTicket addBookTicket(BookTicket bookTicket);
+    public List<BookTicket> getBookTicketByUser(User user);
+    public BookTicket findBookTicketById(Integer id);
+    public void delBookTicket(BookTicket bookTicket);
     
     
 }

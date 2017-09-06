@@ -6,9 +6,11 @@
 package en.uog.frames.clients;
 
 import en.uog.dao.BookingDaoImpl;
+import en.uog.entities.BookTicket;
 import en.uog.entities.OnScreen;
 import en.uog.entities.User;
 import en.uog.tablesmodel.clients.ModelListProgram;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,7 +48,12 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         scrilll = new javax.swing.JScrollPane();
         tableProgram = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaDetails = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnBuy = new javax.swing.JButton();
 
@@ -63,21 +70,56 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableProgram.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProgramMouseClicked(evt);
+            }
+        });
         scrilll.setViewportView(tableProgram);
 
         jDesktopPane1.add(scrilll, java.awt.BorderLayout.CENTER);
 
+        txaDetails.setColumns(20);
+        txaDetails.setRows(5);
+        jScrollPane1.setViewportView(txaDetails);
+
+        jDesktopPane1.add(jScrollPane1, java.awt.BorderLayout.PAGE_END);
+
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel1.setText("Quantity : ");
+
+        jLabel2.setText("err quantity");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(183, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(21, 21, 21))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -85,6 +127,11 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         btnBuy.setText("Buy");
+        btnBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuyActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnBuy, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
@@ -92,13 +139,45 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
+        // TODO add your handling code here:
+        if (tableProgram.getSelectedRow() != -1) {
+            OnScreen onScreen = liste.get(tableProgram.getSelectedRow());
+            dao = new BookingDaoImpl();
+            BookTicket bookTicket = new BookTicket();
+            bookTicket.setMovieName(onScreen.getMovie().getTitle());
+            bookTicket.setUser(currentUser);
+            bookTicket.setDatePurchase(new Date());
+            bookTicket.setOnScreem(dao.findOnScreenById(onScreen.getId()));
+            dao.addBookTicket(bookTicket);
+
+        }else{
+            System.err.println("Please select user before");
+        }
+    }//GEN-LAST:event_btnBuyActionPerformed
+
+    private void tableProgramMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProgramMouseClicked
+        // TODO add your handling code here:
+        OnScreen onScreen = liste.get(tableProgram.getSelectedRow());
+        txaDetails.setText("Abstract : "+onScreen.getMovie().getMovieAbstract());
+    }//GEN-LAST:event_tableProgramMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuy;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JScrollPane scrilll;
     private javax.swing.JTable tableProgram;
+    private javax.swing.JTextArea txaDetails;
     // End of variables declaration//GEN-END:variables
 }

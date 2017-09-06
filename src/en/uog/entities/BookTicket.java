@@ -35,7 +35,7 @@ public class BookTicket {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "idOnScreem")
+    @JoinColumn(name = "idOnScreen")
     private OnScreen onScreem;
 
     public User getUser() {

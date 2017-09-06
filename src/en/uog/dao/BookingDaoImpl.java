@@ -6,6 +6,7 @@
 package en.uog.dao;
 
 import en.uog.database.PersistenceManager;
+import en.uog.entities.BookTicket;
 import en.uog.entities.Movie;
 import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
@@ -211,6 +212,40 @@ public class BookingDaoImpl implements IBookingDao{
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		em.remove(em.contains(onScreen) ? onScreen : em.merge(onScreen));
+		et.commit();
+		em.close();
+    }
+
+    @Override
+    public BookTicket addBookTicket(BookTicket bookTicket) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(bookTicket);
+		et.commit();
+		em.close();
+        return bookTicket;
+    }
+
+    @Override
+    public List<BookTicket> getBookTicketByUser(User user) {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT m from BookTicket m");
+        return q.getResultList();
+    }
+
+    @Override
+    public BookTicket findBookTicketById(Integer id) {
+        return em.find(BookTicket.class, id);
+    }
+
+    @Override
+    public void delBookTicket(BookTicket bookTicket) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(em.contains(bookTicket) ? bookTicket : em.merge(bookTicket));
 		et.commit();
 		em.close();
     }

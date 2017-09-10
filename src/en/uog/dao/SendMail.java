@@ -49,4 +49,51 @@ public class SendMail {
 			throw new RuntimeException(e);
 		}
    }
+   public static void SendReceiptOfPayment(String email,String fileName) {    
+	   final String username = "supquirk2017@gmail.com";
+		final String password = "Supinfo07";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		Session session = Session.getInstance(props,
+		  new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		  });
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(username));
+			message.setRecipients(Message.RecipientType.TO,
+				InternetAddress.parse(email));
+			message.setSubject("receipt of payment.");
+			message.setText("Hello ,"
+				+ "\n Tank you for the paiement"
+				+ "\n\n Thank you !!,"
+				+ "\n © Cinema Booking Systeme 2017.");
+                        // Create a multipar message
+                Multipart multipart = new MimeMultipart();
+                BodyPart messageBodyPart = new MimeBodyPart();
+                // Part two is attachment
+                messageBodyPart = new MimeBodyPart();
+                DataSource source = new FileDataSource(fileName);
+                messageBodyPart.setDataHandler(new DataHandler(source));
+                messageBodyPart.setFileName(fileName);
+                multipart.addBodyPart(messageBodyPart);
+                // Send the complete message parts
+                         message.setContent(multipart);
+			Transport.send(message);
+                        
+			System.out.println("Done");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+   }
 }

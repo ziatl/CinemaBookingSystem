@@ -8,11 +8,14 @@ package en.uog.frames.clients;
 import com.itextpdf.text.DocumentException;
 import en.uog.dao.BookingDaoImpl;
 import en.uog.dao.CreatePdf;
+import en.uog.dao.SendMail;
 import en.uog.entities.BookTicket;
 import en.uog.entities.OnScreen;
 import en.uog.entities.User;
 import en.uog.tablesmodel.clients.ModelListProgram;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -114,6 +117,17 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
             bookTicket.setDatePurchase(new Date());
             bookTicket.setOnScreem(dao.findOnScreenById(onScreen.getId()));
             dao.addBookTicket(bookTicket);
+            String file = null;
+            try {
+                file = CreatePdf.createPdf(currentUser.getFirstname() + " " + currentUser.getLastName(), bookTicket.getOnScreem().getMovie().getTitle(), bookTicket.getOnScreem().getPrice());
+            } catch (DocumentException ex) {
+                Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            SendMail.SendReceiptOfPayment(currentUser.getEmail(), file);
 
         }else{
             System.err.println("Please select user before");

@@ -74,7 +74,7 @@ public class IFProgrammScreen extends javax.swing.JInternalFrame {
             mapMinute.put(i, i);
             comboMin.addItem(""+i);
         }
-        for (int i = 1; i <= 12; i++) {
+        for (int i = 1; i <= 24; i++) {
             mapHour.put(i, i);
             comboHour.addItem(""+i);
         }

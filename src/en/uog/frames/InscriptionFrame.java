@@ -461,6 +461,14 @@ public class InscriptionFrame extends javax.swing.JFrame {
             errTelephone.setText(MESSAGE_EMPTY);
             validation = false;
         }
+        //Password
+        if (txfPassword.getText().trim().isEmpty()) {
+            errPassword.setText(MESSAGE_EMPTY);
+            validation = false;
+        }else if(txfPassword.getText().trim().length() < 8){
+            errPassword.setText("Mininum 8 characters");
+            validation = false;
+        }
         
         return validation;
     }

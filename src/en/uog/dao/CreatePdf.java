@@ -33,6 +33,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.ElementList;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -47,7 +48,7 @@ public class CreatePdf {
 	public static Double price;
 	
 
-	 public static void createPdf(String userName,String movieTitle,Double moviePrice) throws DocumentException, URISyntaxException, IOException{
+	 public static String createPdf(String userName,String movieTitle,Double moviePrice) throws DocumentException, URISyntaxException, IOException{
 	        title = movieTitle;
 	        name = userName;
 	        price = moviePrice;
@@ -63,8 +64,9 @@ public class CreatePdf {
 	        Chunk chunkMovie = new Chunk("Movie : "+title, font);
 	        paragraphMovie.add(chunkMovie);
 	        Paragraph paragraph = new Paragraph();
-	        Image img = Image.getInstance("Images/titi_logo.png");
-			img.scalePercent(10);
+                System.out.println(new File("").getAbsolutePath());
+	        Image img = Image.getInstance("images/titi_logo.png");
+		        img.scalePercent(10);
 			paragraph.add(new Paragraph(new Chunk(" ", font)));
 			paragraph.add(new Paragraph(new Chunk(" ", font)));
 			document.add(paragraph);
@@ -88,17 +90,15 @@ public class CreatePdf {
 
 
 	        document.close();
+                return file;
 	    }
  	
 	 	private static void addCustomRows(PdfPTable table) throws URISyntaxException, BadElementException, IOException {
-	 			    //Path path = Paths.get(ClassLoader.getSystemResource("titi_logo.png").toURI());
-	 			    Image img = Image.getInstance("images/titi_logo.png");
-	 			    img.scalePercent(10);
-	 			   Font font = FontFactory.getFont(FontFactory.COURIER, 20, BaseColor.BLACK);
-	 			    PdfPCell imageCell = new PdfPCell(img);
-	 			    //table.addCell(imageCell);
-	 			   PdfPCell cell;
-	 			   cell = new PdfPCell(new Phrase(new Chunk("ABSTRACT", font)));
+	 			//Path path = Paths.get(ClassLoader.getSystemResource("titi_logo.png").toURI());
+	 			Font font = FontFactory.getFont(FontFactory.COURIER, 20, BaseColor.BLACK);
+	 			//table.addCell(imageCell);
+	 			PdfPCell cell;
+	 			cell = new PdfPCell(new Phrase(new Chunk("ABSTRACT", font)));
 	 		        cell.setColspan(3);
 	 		        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 	 		        table.addCell(cell);

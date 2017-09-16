@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -30,7 +32,8 @@ public class Movie {
     //Database relations
     @OneToMany(mappedBy = "movie")
     private List<OnScreen> onScreems;
-    @OneToMany(mappedBy = "movie")
+    @ManyToOne
+    @JoinColumn(name = "idCategorie")
     private Categorie categorie;
     @OneToMany(mappedBy = "movie")
     List<Star> stars;

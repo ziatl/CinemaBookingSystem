@@ -51,6 +51,16 @@ public class Star implements Serializable{
         return movie;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
+
     public void setMovie(Movie movie) {
         this.movie = movie;
     }

@@ -78,6 +78,15 @@ public class User {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
+    public List<Star> getStars() {
+        return stars;
+    }
+
+    public void setStars(List<Star> stars) {
+        this.stars = stars;
+    }
+    
     
     
 

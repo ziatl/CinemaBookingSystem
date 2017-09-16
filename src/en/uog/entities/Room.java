@@ -67,7 +67,5 @@ public class Room {
         this.roomId = roomId;
         this.numberOfPlace = numberOfPlace;
     }
-    
-    
-    
+
 }

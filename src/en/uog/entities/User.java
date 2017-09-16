@@ -42,6 +42,10 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "idProfile")
     private Profile profile;
+    
+    // Database relations
+    @OneToMany(mappedBy = "user")
+    private List<Star> stars;
 
     public List<BookTicket> getBookTickets() {
         return bookTickets;

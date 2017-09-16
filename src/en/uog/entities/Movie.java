@@ -30,6 +30,10 @@ public class Movie {
     //Database relations
     @OneToMany(mappedBy = "movie")
     private List<OnScreen> onScreems;
+    @OneToMany(mappedBy = "movie")
+    private Categorie categorie;
+    @OneToMany(mappedBy = "movie")
+    List<Star> stars;
 
     public List<OnScreen> getOnScreems() {
         return onScreems;
@@ -78,6 +82,24 @@ public class Movie {
     public String getImage() {
         return image;
     }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public List<Star> getStars() {
+        return stars;
+    }
+
+    public void setStars(List<Star> stars) {
+        this.stars = stars;
+    }
+    
+    
 
     public void setImage(String image) {
         this.image = image;

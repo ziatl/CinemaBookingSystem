@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/dao/CreatePdf.java</file>
-            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/frames/clients/IFViewPrograms.java</file>
-            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/entities/BookTicket.java</file>
-            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/entities/Room.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/META-INF/persistence.xml</file>
         </group>
     </open-files>
 </project-private>

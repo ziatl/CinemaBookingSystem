@@ -43,45 +43,41 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="txfLastName" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txfTelephone" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txfAddress" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txfEmail" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txfFirstname" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txfLastName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txfTelephone" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txfAddress" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txfEmail" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txfPassword" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txfFirstname" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                  <Component id="panDate" min="-2" pref="220" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="errBirthday" min="-2" pref="241" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="panDate" min="-2" pref="220" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="429" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="errFistnamt" min="-2" pref="241" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="errLastName" alignment="1" pref="241" max="32767" attributes="0"/>
-                                  <Component id="errTelephone" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="errAddress" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="errEmail" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="errPassword" alignment="1" max="32767" attributes="0"/>
-                              </Group>
+                      <Component id="txfPassw" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="errBirthday" alignment="1" min="-2" pref="241" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="errFistnamt" min="-2" pref="241" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="errLastName" alignment="1" pref="241" max="32767" attributes="0"/>
+                              <Component id="errTelephone" alignment="1" max="32767" attributes="0"/>
+                              <Component id="errAddress" alignment="1" max="32767" attributes="0"/>
+                              <Component id="errEmail" alignment="1" max="32767" attributes="0"/>
+                              <Component id="errPassword" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -156,9 +152,9 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txfPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="errPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txfPassw" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -288,11 +284,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfEmailActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txfPassword">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txfPasswordActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="errFistnamt">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -415,6 +406,12 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txfPassw">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

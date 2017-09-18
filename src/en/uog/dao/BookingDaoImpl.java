@@ -7,6 +7,7 @@ package en.uog.dao;
 
 import en.uog.database.PersistenceManager;
 import en.uog.entities.BookTicket;
+import en.uog.entities.Categorie;
 import en.uog.entities.Movie;
 import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
@@ -131,6 +132,17 @@ public class BookingDaoImpl implements IBookingDao{
     }
 
     @Override
+    public List<Movie> getAllMovieByCategorie(String categorie) {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT m from Movie where m.categorie.name like :X");
+        q.setParameter("X",categorie);
+        return q.getResultList();
+    }
+    
+    
+
+    @Override
     public Movie findMovieById(Integer id) {
         em = PersistenceManager.getEntityManager();
         return em.find(Movie.class, id);
@@ -201,6 +213,17 @@ public class BookingDaoImpl implements IBookingDao{
     }
 
     @Override
+    public List<OnScreen> getAllOnScreenByCategorie(int categorie) {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT m from OnScreen m where m.movie.categorie.id =:X");
+        q.setParameter("X", categorie);
+        return q.getResultList();
+    }
+    
+    
+
+    @Override
     public OnScreen findOnScreenById(Integer id) {
          em = PersistenceManager.getEntityManager();
         return em.find(OnScreen.class, id);
@@ -248,6 +271,40 @@ public class BookingDaoImpl implements IBookingDao{
 		em.remove(em.contains(bookTicket) ? bookTicket : em.merge(bookTicket));
 		et.commit();
 		em.close();
+    }
+
+    @Override
+    public Categorie addCategorie(Categorie categorie) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(categorie);
+		et.commit();
+		em.close();
+        return categorie;
+    }
+
+    @Override
+    public Categorie findCategorieById(Integer id) {
+        return em.find(Categorie.class, id);
+    }
+
+    @Override
+    public void delCategorie(Categorie categorie) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(em.contains(categorie) ? categorie : em.merge(categorie));
+		et.commit();
+		em.close();
+    }
+
+    @Override
+    public List<Categorie> getAllCategorie() {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT c from Categorie c");
+        return q.getResultList();
     }
     
     

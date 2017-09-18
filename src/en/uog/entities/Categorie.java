@@ -23,6 +23,7 @@ public class Categorie implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
+    private String description;
     // Database relations
     @OneToMany(mappedBy = "categorie")
     private List<Movie> movies;
@@ -51,8 +52,18 @@ public class Categorie implements Serializable{
         this.movies = movies;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+
     public Categorie() {
     }
+    
 
     public Categorie(String name, List<Movie> movies) {
         this.name = name;

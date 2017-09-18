@@ -10,10 +10,12 @@ import en.uog.dao.BookingDaoImpl;
 import en.uog.dao.CreatePdf;
 import en.uog.dao.SendMail;
 import en.uog.entities.BookTicket;
+import en.uog.entities.Categorie;
 import en.uog.entities.OnScreen;
 import en.uog.entities.User;
 import en.uog.tablesmodel.UserModel;
 import en.uog.tablesmodel.clients.ModelListProgram;
+import java.awt.event.ItemEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -32,6 +34,7 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
     ModelListProgram programModel = new ModelListProgram();
      List<OnScreen> liste;
      BookingDaoImpl dao;
+     List<Categorie> listeCategories;
     /**
      * Creates new form IFViewPrograms
      */
@@ -44,6 +47,13 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         dao = new BookingDaoImpl();
         liste = dao.getAllOnScreen();
         programModel.LoadOnScreen(liste);
+        
+        listeCategories = dao.getAllCategorie();
+        comboCategorie.removeAllItems();
+        comboCategorie.addItem("All categories");
+        for (Categorie categorie : listeCategories) {
+            comboCategorie.addItem(categorie.getName());
+        }
     }
 
     /**
@@ -62,7 +72,7 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         txaDetails = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboCategorie = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         btnBuy = new javax.swing.JButton();
 
@@ -97,8 +107,18 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         jLabel1.setText("Categorie : ");
         jPanel1.add(jLabel1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1);
+        comboCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCategorie.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboCategorieItemStateChanged(evt);
+            }
+        });
+        comboCategorie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comboCategorieMouseClicked(evt);
+            }
+        });
+        jPanel1.add(comboCategorie);
 
         jDesktopPane1.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -163,10 +183,39 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         txaDetails.setText("Abstract : "+onScreen.getMovie().getMovieAbstract());
     }//GEN-LAST:event_tableProgramMouseClicked
 
+    private void comboCategorieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboCategorieMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCategorieMouseClicked
+
+    private void comboCategorieItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCategorieItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED) {
+            if (comboCategorie.getSelectedIndex() == 0) {
+            tableProgram.setModel(programModel);
+            dao = new BookingDaoImpl();
+            liste = dao.getAllOnScreen();
+            programModel.LoadOnScreen(liste);
+        
+            listeCategories = dao.getAllCategorie();
+        }else{
+                try {
+                    int cat = listeCategories.get(comboCategorie.getSelectedIndex()-1).getId();
+                    System.err.println(cat);
+                    tableProgram.setModel(programModel);
+                    dao = new BookingDaoImpl();
+                    liste = dao.getAllOnScreenByCategorie(cat);
+                    programModel.LoadOnScreen(liste);
+                } catch (Exception e) {
+                }
+            
+        }
+        }
+    }//GEN-LAST:event_comboCategorieItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuy;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboCategorie;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

@@ -45,11 +45,11 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txfLogin = new javax.swing.JTextField();
-        txfPassword = new javax.swing.JTextField();
         errPassword = new javax.swing.JLabel();
         errLogin = new javax.swing.JLabel();
         errConnexion = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        txfPassw = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connexion");
@@ -120,10 +120,6 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         jDesktopPane1.add(txfLogin);
         txfLogin.setBounds(120, 140, 280, 26);
 
-        txfPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jDesktopPane1.add(txfPassword);
-        txfPassword.setBounds(120, 220, 280, 26);
-
         errPassword.setForeground(new java.awt.Color(255, 255, 51));
         errPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errPassword.setText("err password");
@@ -152,6 +148,10 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         });
         jDesktopPane1.add(jButton1);
         jButton1.setBounds(200, 330, 120, 29);
+
+        txfPassw.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDesktopPane1.add(txfPassw);
+        txfPassw.setBounds(120, 220, 280, 26);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,10 +249,10 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
     public void validation(){
         validation = true;
         errNUll();
-        if (!ValidationProvider.minString(txfPassword.getText().trim(), 8)) {
+        if (!ValidationProvider.minString(txfPassw.getText().trim(), 8)) {
             validation = false;
             errPassword.setText("minimum 8 charaters");
-        }else if (txfPassword.getText().trim().isEmpty()){
+        }else if (txfPassw.getText().trim().isEmpty()){
             validation = false;
             errPassword.setText(MESSAGE_EMPTY);
         }
@@ -267,7 +267,7 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
     }
     private User login() {
        dao = new BookingDaoImpl();
-       return dao.login(txfLogin.getText(), txfPassword.getText());
+       return dao.login(txfLogin.getText(), txfPassw.getText());
     }
     public void errNUll(){
         this.errPassword.setText("");
@@ -288,7 +288,7 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txfLogin;
-    private javax.swing.JTextField txfPassword;
+    private javax.swing.JPasswordField txfPassw;
     // End of variables declaration//GEN-END:variables
 
     @Override

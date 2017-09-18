@@ -5,19 +5,17 @@
  */
 package en.uog.tablesmodel;
 
-import en.uog.entities.Movie;
-import java.text.SimpleDateFormat;
+import en.uog.entities.Categorie;
 import java.util.List;
 import java.util.Vector;
-
 import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author aziz
  */
-public class AddMovieModel extends AbstractTableModel{
-    public String[] columsName = new String[]{"Title","Abstract","Date release","Categorie"};
+public class AddCategorieModel extends AbstractTableModel{
+    public String[] columsName = new String[]{"Name","Description"};
     private Vector<String[]> rows = new Vector<String[]>();
     @Override
     public int getRowCount() {
@@ -42,11 +40,10 @@ public class AddMovieModel extends AbstractTableModel{
         return rows.get(rowIndex)[columnIndex];
     }
     
-    public void LoadMovie(List<Movie> movies){
+    public void LoadCategorie(List<Categorie> categories){
         rows = new Vector<String[]>();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMMM yyyy");
-        for(Movie movie:movies){
-            rows.add(new String[]{movie.getTitle(),movie.getMovieAbstract(),sdf.format(movie.getDateRelease()),movie.getCategorie().getName()});
+        for(Categorie categorie:categories){
+            rows.add(new String[]{categorie.getName(),categorie.getDescription()});
         }
         fireTableChanged(null);
     }

@@ -37,6 +37,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
          itemProgram.remove(itemListProgram);
          itemProgram.remove(itemAddProgram);
          meneBar.remove(itemUsers);
+         meneBar.remove(menuCategorie);
     }
     
     public void hideAdmin(){
@@ -64,6 +65,8 @@ public class WelcomeFrame extends javax.swing.JFrame {
         itemUsers = new javax.swing.JMenu();
         btnAddUser = new javax.swing.JMenuItem();
         itemListUsers = new javax.swing.JMenuItem();
+        menuCategorie = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         itemMovie = new javax.swing.JMenu();
         itemAddMovie = new javax.swing.JMenuItem();
         itemListMovie = new javax.swing.JMenuItem();
@@ -148,6 +151,18 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
         meneBar.add(itemUsers);
 
+        menuCategorie.setText("Categories");
+
+        jMenuItem1.setText("Add categorie");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuCategorie.add(jMenuItem1);
+
+        meneBar.add(menuCategorie);
+
         itemMovie.setText("Movies");
 
         itemAddMovie.setText("Add movie");
@@ -193,7 +208,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -284,6 +299,14 @@ public class WelcomeFrame extends javax.swing.JFrame {
         desktop.add(ifv);
     }//GEN-LAST:event_itemViewProgramActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        desktop.removeAll();
+        IFAddCategorie ifa = new IFAddCategorie();
+        ifa.setVisible(true);
+        desktop.add(ifa);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -340,7 +363,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JMenu itemUsers;
     private javax.swing.JMenuItem itemViewProgram;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar meneBar;
+    private javax.swing.JMenu menuCategorie;
     private javax.swing.JMenu menuRooms;
     // End of variables declaration//GEN-END:variables
 }

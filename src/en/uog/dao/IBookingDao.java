@@ -6,6 +6,7 @@
 package en.uog.dao;
 
 import en.uog.entities.BookTicket;
+import en.uog.entities.Categorie;
 import en.uog.entities.Movie;
 import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
@@ -32,6 +33,7 @@ public interface IBookingDao {
     public List<Movie> getAllMovies();
     public Movie findMovieById(Integer id);
     public void delMovie(Movie u);
+    public List<Movie> getAllMovieByCategorie(String categorie);
     
     //Room
     public Room addRoom(Room r);
@@ -44,6 +46,7 @@ public interface IBookingDao {
     public List<OnScreen> getAllOnScreen();
     public OnScreen findOnScreenById(Integer id);
     public void delonScreen(OnScreen onScreen);
+    public List<OnScreen> getAllOnScreenByCategorie(int categorie);
     
     
     //BoolTicket
@@ -51,6 +54,12 @@ public interface IBookingDao {
     public List<BookTicket> getBookTicketByUser(User user);
     public BookTicket findBookTicketById(Integer id);
     public void delBookTicket(BookTicket bookTicket);
+    
+    //Categorie 
+    public Categorie addCategorie(Categorie categorie);
+    public Categorie findCategorieById(Integer id);
+    public void delCategorie(Categorie categorie);
+    public List<Categorie> getAllCategorie();
     
     
 }

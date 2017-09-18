@@ -7,6 +7,7 @@ package en.uog.frames;
 
 import en.uog.dao.BookingDaoImpl;
 import en.uog.dao.ValidationProvider;
+import en.uog.entities.Categorie;
 import en.uog.entities.Movie;
 import en.uog.tablesmodel.AddMovieModel;
 import java.awt.Image;
@@ -43,6 +44,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
      List<Movie> liste;
      BookingDaoImpl dao;
      String imageName = "";
+      List<Categorie> listeCategories;
 
      
     /**
@@ -58,17 +60,24 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         liste = dao.getAllMovies();
         movieModel.LoadMovie(liste);
         initErr();
-        
+        listeCategories = dao.getAllCategorie();
+        comboCategorie.removeAllItems();
+        comboCategorie.addItem(" ");
+        for (Categorie categorie : listeCategories) {
+            comboCategorie.addItem(categorie.getName());
+        }
     }
     public void initErr(){
         errTtile.setText("");
         errAbstract.setText("");
         errDate.setText("");
         errImage.setText("");
+        errCategorie.setText("");
     }
     
     boolean validation = true;
     public boolean validation(){
+        validation = true;
         if (txfTitle.getText().equals("")) {
             validation = false;
             errTtile.setText("Set a valid value");
@@ -77,6 +86,11 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         if (txfAbstract.getText().equals("")) {
             validation = false;
             errTtile.setText("Set a valid value"); 
+        }
+        
+        if (comboCategorie.getSelectedIndex()==0) {
+            validation = false;
+            errCategorie.setText("select categorie");
         }
         
  
@@ -128,6 +142,8 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         imgMoovie = new javax.swing.JLabel();
         errAbstract = new javax.swing.JLabel();
         errImage = new javax.swing.JLabel();
+        comboCategorie = new javax.swing.JComboBox<>();
+        errCategorie = new javax.swing.JLabel();
 
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -158,7 +174,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Release date :");
         desktop.add(jLabel3);
-        jLabel3.setBounds(50, 170, 120, 16);
+        jLabel3.setBounds(10, 170, 90, 16);
 
         errDate.setForeground(new java.awt.Color(255, 255, 51));
         errDate.setText("err abstract");
@@ -193,7 +209,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         scrListe.setViewportView(tableMovie);
 
         desktop.add(scrListe);
-        scrListe.setBounds(10, 210, 630, 170);
+        scrListe.setBounds(10, 210, 680, 170);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -202,9 +218,9 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
             }
         });
         desktop.add(btnDelete);
-        btnDelete.setBounds(260, 390, 97, 29);
+        btnDelete.setBounds(320, 390, 97, 29);
         desktop.add(panDate);
-        panDate.setBounds(180, 170, 220, 30);
+        panDate.setBounds(100, 170, 220, 30);
 
         btnAddMovie.setText("Add movie");
         btnAddMovie.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +229,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
             }
         });
         desktop.add(btnAddMovie);
-        btnAddMovie.setBounds(450, 170, 110, 29);
+        btnAddMovie.setBounds(210, 390, 110, 29);
 
         btnAddImage.setText("load image");
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
@@ -240,6 +256,15 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(errImage);
         errImage.setBounds(390, 90, 140, 16);
 
+        comboCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        desktop.add(comboCategorie);
+        comboCategorie.setBounds(360, 170, 130, 27);
+
+        errCategorie.setForeground(new java.awt.Color(255, 255, 51));
+        errCategorie.setText("err categorie");
+        desktop.add(errCategorie);
+        errCategorie.setBounds(500, 170, 140, 16);
+
         getContentPane().add(desktop);
 
         pack();
@@ -261,7 +286,8 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
 //                }
                 movie.setImage(imageName);
             }
-            
+            Categorie categorie = listeCategories.get(comboCategorie.getSelectedIndex()-1);
+            movie.setCategorie(categorie);
             dao.addMovie(movie);
             dao = new BookingDaoImpl();
             liste = new ArrayList<Movie>(dao.getAllMovies());
@@ -323,8 +349,10 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAddImage;
     private javax.swing.JButton btnAddMovie;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JComboBox<String> comboCategorie;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel errAbstract;
+    private javax.swing.JLabel errCategorie;
     private javax.swing.JLabel errDate;
     private javax.swing.JLabel errImage;
     private javax.swing.JLabel errTtile;

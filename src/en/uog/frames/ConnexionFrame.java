@@ -49,9 +49,10 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         errPassword = new javax.swing.JLabel();
         errLogin = new javax.swing.JLabel();
         errConnexion = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Welcome");
+        setTitle("Connexion");
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(506, 394));
         setMinimumSize(new java.awt.Dimension(506, 394));
@@ -59,46 +60,51 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
 
         jDesktopPane1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Apple Chancery", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 255, 102));
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cinema Booking System");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jDesktopPane1.add(jLabel1);
         jLabel1.setBounds(70, 30, 380, 50);
 
-        btnLogin.setText("Login");
+        btnLogin.setBackground(new java.awt.Color(153, 0, 255));
+        btnLogin.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("Log in ☺");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
         jDesktopPane1.add(btnLogin);
-        btnLogin.setBounds(220, 290, 79, 29);
+        btnLogin.setBounds(140, 290, 110, 29);
 
-        btnInscription.setBackground(new java.awt.Color(255, 255, 255));
-        btnInscription.setText("Join system : Inscription");
+        btnInscription.setBackground(new java.awt.Color(51, 51, 255));
+        btnInscription.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        btnInscription.setForeground(new java.awt.Color(255, 255, 255));
+        btnInscription.setText("Join system ☞");
         btnInscription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInscriptionActionPerformed(evt);
             }
         });
         jDesktopPane1.add(btnInscription);
-        btnInscription.setBounds(160, 330, 197, 29);
+        btnInscription.setBounds(270, 290, 110, 29);
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Password");
         jDesktopPane1.add(jLabel2);
-        jLabel2.setBounds(220, 200, 80, 20);
+        jLabel2.setBounds(220, 200, 80, 18);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Marker Felt", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Login");
         jDesktopPane1.add(jLabel3);
-        jLabel3.setBounds(230, 120, 60, 20);
+        jLabel3.setBounds(230, 120, 60, 18);
 
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("© Copyright 2017 F.TITIKPINA");
@@ -136,6 +142,16 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         errConnexion.setText("Login or Password is incorrect");
         jDesktopPane1.add(errConnexion);
         errConnexion.setBounds(150, 90, 230, 17);
+
+        jButton1.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        jButton1.setText("Welcome");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(jButton1);
+        jButton1.setBounds(200, 330, 120, 29);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,6 +200,13 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         InscriptionFrame ifr = new InscriptionFrame();
         ifr.setVisible(true);
     }//GEN-LAST:event_btnInscriptionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        PrincipalFrame pf = new PrincipalFrame();
+        pf.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,6 +281,7 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
     private javax.swing.JLabel errConnexion;
     private javax.swing.JLabel errLogin;
     private javax.swing.JLabel errPassword;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

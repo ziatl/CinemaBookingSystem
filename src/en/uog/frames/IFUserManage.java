@@ -6,9 +6,12 @@
 package en.uog.frames;
 
 import en.uog.dao.BookingDaoImpl;
+import en.uog.entities.OnScreen;
 import en.uog.entities.User;
+import en.uog.tablesmodel.ScreenModel;
 import en.uog.tablesmodel.UserModel;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -23,8 +26,10 @@ public class IFUserManage extends javax.swing.JInternalFrame {
     UserModel userModel = new UserModel();
     List<User> liste;
     BookingDaoImpl dao;
-    public IFUserManage() {
+    User currentUser;
+    public IFUserManage(User user) {
         initComponents();
+        currentUser = user;
         desktop.setSize(this.getSize());
         tableUser.setModel(userModel);
         BookingDaoImpl dao = new BookingDaoImpl();
@@ -104,23 +109,42 @@ public class IFUserManage extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:       
-        if (tableUser.getSelectedRow() != -1) {
-            User user = liste.get(tableUser.getSelectedRow());
-            dao = new BookingDaoImpl();
-            dao.delUser(user);
-            liste.remove(tableUser.getSelectedRow());
-            dao = new BookingDaoImpl();
-            userModel = new UserModel();
-            dao = new BookingDaoImpl();
-            userModel.loadUsers(liste);
-            tableUser.removeAll();
-            tableUser.setModel(userModel);
-            
+        // TODO add your handling code here: 
+        if (currentUser.getProfile().getProfileName().equals("ADMIN")) {
+            JOptionPane jop = new JOptionPane();	
+            this.setVisible(false);
+            int option = jop.showConfirmDialog(null, "You can not delete administrator", "Message", JOptionPane.WARNING_MESSAGE, JOptionPane.QUESTION_MESSAGE);		
+            if(option == JOptionPane.OK_OPTION){
+                this.setVisible(true);
+            }else{
+                this.setVisible(true);
+            }
         }else{
-            System.err.println("Please select user before");
-        }
 
+            JOptionPane jop = new JOptionPane();	
+            this.setVisible(false);
+            int option = jop.showConfirmDialog(null, "Do you want to delete ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
+            if(option == JOptionPane.OK_OPTION){
+                if (tableUser.getSelectedRow() != -1) {
+                    User user = liste.get(tableUser.getSelectedRow());
+                    dao = new BookingDaoImpl();
+                    dao.delUser(user);
+                    liste.remove(tableUser.getSelectedRow());
+                    dao = new BookingDaoImpl();
+                    userModel = new UserModel();
+                    dao = new BookingDaoImpl();
+                    userModel.loadUsers(liste);
+                    tableUser.removeAll();
+                    tableUser.setModel(userModel);
+
+                }else{
+                    System.err.println("Please select user before");
+                }
+                this.setVisible(true);
+            }else{
+                this.setVisible(true);
+            }            
+        }
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 

@@ -71,35 +71,43 @@ public class InscriptionFrame extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         errInscription = new javax.swing.JLabel();
         panDate = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inscription");
         setBackground(new java.awt.Color(65, 105, 170));
 
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Firtname :");
 
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Lastname :");
 
+        jLabel3.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Contact :");
 
+        jLabel4.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Address :");
 
+        jLabel5.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setText("Email :");
 
+        jLabel6.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("Password :");
 
+        jLabel7.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("Birthday :");
@@ -161,18 +169,23 @@ public class InscriptionFrame extends javax.swing.JFrame {
         errBirthday.setForeground(new java.awt.Color(255, 255, 102));
         errBirthday.setText("jLabel8");
 
-        btnInscription.setText("Inscription");
+        btnInscription.setBackground(new java.awt.Color(51, 51, 255));
+        btnInscription.setForeground(new java.awt.Color(255, 255, 255));
+        btnInscription.setText("Join system ☞");
         btnInscription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInscriptionActionPerformed(evt);
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Apple Chancery", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Marker Felt", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 255, 102));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Inscription");
 
-        btnCancel.setText("Cancel");
+        btnCancel.setBackground(new java.awt.Color(153, 0, 255));
+        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancel.setText("Log in ☺︎");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -183,6 +196,14 @@ public class InscriptionFrame extends javax.swing.JFrame {
         errInscription.setForeground(new java.awt.Color(255, 102, 102));
         errInscription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errInscription.setText("Login or Password is incorrect");
+
+        jButton1.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        jButton1.setText("Welcome");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         dekstop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -209,66 +230,68 @@ public class InscriptionFrame extends javax.swing.JFrame {
         dekstop.setLayer(btnCancel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(errInscription, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(panDate, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dekstop.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dekstopLayout = new javax.swing.GroupLayout(dekstop);
         dekstop.setLayout(dekstopLayout);
         dekstopLayout.setHorizontalGroup(
             dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dekstopLayout.createSequentialGroup()
-                .addGap(3, 3, 3)
                 .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dekstopLayout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txfLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txfTelephone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txfAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txfEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txfPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txfFirstname)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dekstopLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(panDate, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(errBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dekstopLayout.createSequentialGroup()
+                        .addGap(429, 429, 429)
                         .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dekstopLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txfLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txfTelephone, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txfAddress, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txfEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txfPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(dekstopLayout.createSequentialGroup()
-                                        .addGap(0, 187, Short.MAX_VALUE)
-                                        .addComponent(btnCancel))
-                                    .addComponent(txfFirstname)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dekstopLayout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(panDate, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))))
-                            .addGroup(dekstopLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dekstopLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(errFistnamt, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(errLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                        .addComponent(errTelephone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(errAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(errEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(errPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(dekstopLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(errBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                            .addComponent(errFistnamt, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(errLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                .addComponent(errTelephone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(errAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(errEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(errPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(errInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206))
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
+                        .addComponent(errInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(206, 206, 206))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(255, 255, 255))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
+                        .addComponent(btnInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancel)
+                        .addGap(213, 213, 213))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dekstopLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(257, 257, 257))))
         );
         dekstopLayout.setVerticalGroup(
             dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,11 +335,13 @@ public class InscriptionFrame extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(errBirthday)
                     .addComponent(panDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(btnInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancel)
-                .addGap(151, 151, 151))
+                .addGap(82, 82, 82)
+                .addGroup(dekstopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel)
+                    .addComponent(btnInscription))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(105, 105, 105))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -387,6 +412,13 @@ public class InscriptionFrame extends javax.swing.JFrame {
         ConnexionFrame cf = new ConnexionFrame();
         cf.setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        PrincipalFrame pf = new PrincipalFrame();
+        pf.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,6 +529,7 @@ public class InscriptionFrame extends javax.swing.JFrame {
     private javax.swing.JLabel errLastName;
     private javax.swing.JLabel errPassword;
     private javax.swing.JLabel errTelephone;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

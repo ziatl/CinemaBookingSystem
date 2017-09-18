@@ -334,6 +334,7 @@ public class IFProgrammScreen extends javax.swing.JInternalFrame {
              dao.addOnScreen(onScreen);
              
              resetElements();
+             lblShowNumber.setText(ValidationProvider.generateShowNumber());   
         }
         
     }//GEN-LAST:event_btnProgramActionPerformed

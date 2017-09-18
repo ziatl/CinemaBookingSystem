@@ -7,6 +7,7 @@ package en.uog.frames;
 
 import en.uog.entities.User;
 import en.uog.frames.clients.IFViewPrograms;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -201,21 +202,36 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
     private void itemConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemConnexionActionPerformed
         // TODO add your handling code here:
+        JOptionPane jop = new JOptionPane();	
+        this.setVisible(false);
+        int option = jop.showConfirmDialog(null, "Do you want to disconnect ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
+        if(option == JOptionPane.OK_OPTION){
         this.dispose();
         ConnexionFrame cf = new ConnexionFrame();
         cf.setVisible(true);
+        }else{
+        this.setVisible(true);
+        }
+        
     }//GEN-LAST:event_itemConnexionActionPerformed
 
     private void itemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemExitActionPerformed
         // TODO add your handling code here:
+        JOptionPane jop = new JOptionPane();	
+        this.setVisible(false);
+        int option = jop.showConfirmDialog(null, "Do you want to quit ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
+        if(option == JOptionPane.OK_OPTION){
         System.exit(0);
+        }else{
+        this.setVisible(true);
+        }
     }//GEN-LAST:event_itemExitActionPerformed
 
     private void itemListUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListUsersActionPerformed
 
            // TODO add your handling code here:
         desktop.removeAll();
-        IFUserManage ifu = new IFUserManage();
+        IFUserManage ifu = new IFUserManage(currentuser);
         ifu.setSize(desktop.getSize());
         ifu.setVisible(true);
         desktop.add(ifu);

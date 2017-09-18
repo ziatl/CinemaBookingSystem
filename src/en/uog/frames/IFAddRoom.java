@@ -11,6 +11,7 @@ import en.uog.entities.Room;
 import en.uog.tablesmodel.AddRoomModel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -196,18 +197,27 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        if (tableRoom.getSelectedRow() != -1) {
-            Room room = liste.get(tableRoom.getSelectedRow());
-            System.out.println(room.getId());
-            dao = new BookingDaoImpl();
-            dao.delRoom(room);
-            dao = new BookingDaoImpl();
-            liste = new ArrayList<Room>(dao.getAllRoom());
-            roomModel.LoadRoom(liste);
-            tableRoom.setModel(roomModel);
+        JOptionPane jop = new JOptionPane();	
+        this.setVisible(false);
+        int option = jop.showConfirmDialog(null, "Do you want to delete ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
+            if(option == JOptionPane.OK_OPTION){
+                if (tableRoom.getSelectedRow() != -1) {
+                Room room = liste.get(tableRoom.getSelectedRow());
+                System.out.println(room.getId());
+                dao = new BookingDaoImpl();
+                dao.delRoom(room);
+                dao = new BookingDaoImpl();
+                liste = new ArrayList<Room>(dao.getAllRoom());
+                roomModel.LoadRoom(liste);
+                tableRoom.setModel(roomModel);
+            }else{
+                System.err.println("Please select room before");
+            }
+            this.setVisible(true);
         }else{
-            System.err.println("Please select room before");
+            this.setVisible(true);
         }
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -216,13 +226,14 @@ public class IFAddRoom extends javax.swing.JInternalFrame {
             Room room = new Room();
             room.setRoomId(txfRoomId.getText());
             room.setNumberOfPlace(Integer.parseInt(txfNumberOfPlace.getText()));
-
             dao = new BookingDaoImpl();
             dao.addRoom(room);
             dao = new BookingDaoImpl();
             liste = new ArrayList<Room>(dao.getAllRoom());
             roomModel.LoadRoom(liste);
-            tableRoom.setModel(roomModel);   
+            tableRoom.setModel(roomModel); 
+            this.txfNumberOfPlace.setText("");
+            this.txfRoomId.setText("");
         }
     }//GEN-LAST:event_btnAddActionPerformed
 

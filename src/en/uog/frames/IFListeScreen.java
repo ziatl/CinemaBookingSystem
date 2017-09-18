@@ -7,8 +7,11 @@ package en.uog.frames;
 
 import en.uog.dao.BookingDaoImpl;
 import en.uog.entities.OnScreen;
+import en.uog.entities.Room;
 import en.uog.tablesmodel.ScreenModel;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -96,21 +99,30 @@ public class IFListeScreen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (tableScreen.getSelectedRow() != -1) {
-            OnScreen onScreen = liste.get(tableScreen.getSelectedRow());
-            dao = new BookingDaoImpl();
-            dao.delonScreen(onScreen);
-            liste.remove(tableScreen.getSelectedRow());
-            dao = new BookingDaoImpl();
-            screenModel = new ScreenModel();
-            dao = new BookingDaoImpl();
-            screenModel.LoadScreen(liste);
-            tableScreen.removeAll();
-            tableScreen.setModel(screenModel);
+        JOptionPane jop = new JOptionPane();	
+        this.setVisible(false);
+        int option = jop.showConfirmDialog(null, "Do you want to delete ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
+        if(option == JOptionPane.OK_OPTION){
+            if (tableScreen.getSelectedRow() != -1) {
+                OnScreen onScreen = liste.get(tableScreen.getSelectedRow());
+                dao = new BookingDaoImpl();
+                dao.delonScreen(onScreen);
+                liste.remove(tableScreen.getSelectedRow());
+                dao = new BookingDaoImpl();
+                screenModel = new ScreenModel();
+                dao = new BookingDaoImpl();
+                screenModel.LoadScreen(liste);
+                tableScreen.removeAll();
+                tableScreen.setModel(screenModel);
             
+            }else{
+                System.err.println("Please select user before");
+            }
+            this.setVisible(true);
         }else{
-            System.err.println("Please select user before");
+            this.setVisible(true);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

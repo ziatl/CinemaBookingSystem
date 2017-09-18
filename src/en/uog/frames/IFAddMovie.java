@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
@@ -265,24 +266,35 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
             dao = new BookingDaoImpl();
             liste = new ArrayList<Movie>(dao.getAllMovies());
             movieModel.LoadMovie(liste);
-            tableMovie.setModel(movieModel);           
+            tableMovie.setModel(movieModel); 
+            this.txfAbstract.setText("");
+            this.txfTitle.setText("");
         }
     }//GEN-LAST:event_btnAddMovieActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        if (tableMovie.getSelectedRow() != -1) {
-            Movie movie = liste.get(tableMovie.getSelectedRow());
-            System.out.println(movie.getId());
-            dao = new BookingDaoImpl();
-            dao.delMovie(movie);
-            dao = new BookingDaoImpl();
-            liste = new ArrayList<Movie>(dao.getAllMovies());
-            movieModel.LoadMovie(liste);
-            tableMovie.setModel(movieModel);
+        JOptionPane jop = new JOptionPane();	
+        this.setVisible(false);
+        int option = jop.showConfirmDialog(null, "Do you want to delete ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
+        if(option == JOptionPane.OK_OPTION){
+            if (tableMovie.getSelectedRow() != -1) {
+                Movie movie = liste.get(tableMovie.getSelectedRow());
+                System.out.println(movie.getId());
+                dao = new BookingDaoImpl();
+                dao.delMovie(movie);
+                dao = new BookingDaoImpl();
+                liste = new ArrayList<Movie>(dao.getAllMovies());
+                movieModel.LoadMovie(liste);
+                tableMovie.setModel(movieModel);
+            }else{
+                System.err.println("Please select movie before");
+            }
+            this.setVisible(true);
         }else{
-            System.err.println("Please select movie before");
+            this.setVisible(true);
         }
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed

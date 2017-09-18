@@ -12,6 +12,7 @@ import en.uog.dao.SendMail;
 import en.uog.entities.BookTicket;
 import en.uog.entities.OnScreen;
 import en.uog.entities.User;
+import en.uog.tablesmodel.UserModel;
 import en.uog.tablesmodel.clients.ModelListProgram;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,6 +60,9 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         tableProgram = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaDetails = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         btnBuy = new javax.swing.JButton();
 
@@ -89,6 +94,14 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
 
         jDesktopPane1.add(jScrollPane1, java.awt.BorderLayout.PAGE_END);
 
+        jLabel1.setText("Categorie : ");
+        jPanel1.add(jLabel1);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox1);
+
+        jDesktopPane1.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
@@ -108,7 +121,11 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         // TODO add your handling code here:
-        if (tableProgram.getSelectedRow() != -1) {
+        JOptionPane jop = new JOptionPane();	
+        this.setVisible(false);
+        int option = jop.showConfirmDialog(null, "Do you want to buy it ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
+        if(option == JOptionPane.OK_OPTION){
+            if (tableProgram.getSelectedRow() != -1) {
             OnScreen onScreen = liste.get(tableProgram.getSelectedRow());
             dao = new BookingDaoImpl();
             BookTicket bookTicket = new BookTicket();
@@ -132,7 +149,11 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         }else{
             System.err.println("Please select user before");
         }
- 
+            this.setVisible(true);
+        }else{
+            this.setVisible(true);
+        }
+        
 
     }//GEN-LAST:event_btnBuyActionPerformed
 
@@ -145,7 +166,10 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuy;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane scrilll;

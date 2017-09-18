@@ -62,6 +62,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
         setTitle("Welcome");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(153, 153, 153));
+        setMaximumSize(new java.awt.Dimension(716, 525));
+        setMinimumSize(new java.awt.Dimension(716, 525));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

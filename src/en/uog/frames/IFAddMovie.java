@@ -70,7 +70,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
     public void initErr(){
         errTtile.setText("");
         errAbstract.setText("");
-        errDate.setText("");
+
         errImage.setText("");
         errCategorie.setText("");
     }
@@ -129,7 +129,6 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         txfTitle = new javax.swing.JTextField();
         errTtile = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        errDate = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         txfAbstract = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
@@ -144,6 +143,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         errImage = new javax.swing.JLabel();
         comboCategorie = new javax.swing.JComboBox<>();
         errCategorie = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -176,17 +176,12 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(jLabel3);
         jLabel3.setBounds(10, 170, 90, 16);
 
-        errDate.setForeground(new java.awt.Color(255, 255, 51));
-        errDate.setText("err abstract");
-        desktop.add(errDate);
-        errDate.setBounds(390, 140, 140, 16);
-
         txfAbstract.setColumns(20);
         txfAbstract.setRows(5);
         scrollPane.setViewportView(txfAbstract);
 
         desktop.add(scrollPane);
-        scrollPane.setBounds(90, 70, 290, 84);
+        scrollPane.setBounds(90, 70, 290, 60);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -243,7 +238,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         imgMoovie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgMoovie.setText("jLabel5");
         desktop.add(imgMoovie);
-        imgMoovie.setBounds(540, 40, 80, 80);
+        imgMoovie.setBounds(550, 40, 80, 80);
 
         errAbstract.setForeground(new java.awt.Color(255, 255, 51));
         errAbstract.setText("err abstract");
@@ -258,12 +253,18 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
 
         comboCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desktop.add(comboCategorie);
-        comboCategorie.setBounds(360, 170, 130, 27);
+        comboCategorie.setBounds(90, 140, 130, 27);
 
         errCategorie.setForeground(new java.awt.Color(255, 255, 51));
-        errCategorie.setText("err categorie");
+        errCategorie.setText("err category");
         desktop.add(errCategorie);
-        errCategorie.setBounds(500, 170, 140, 16);
+        errCategorie.setBounds(230, 140, 140, 16);
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel5.setText("Category :");
+        desktop.add(jLabel5);
+        jLabel5.setBounds(10, 140, 80, 16);
 
         getContentPane().add(desktop);
 
@@ -353,7 +354,6 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel errAbstract;
     private javax.swing.JLabel errCategorie;
-    private javax.swing.JLabel errDate;
     private javax.swing.JLabel errImage;
     private javax.swing.JLabel errTtile;
     private javax.swing.JLabel imgMoovie;
@@ -361,6 +361,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel panDate;
     private javax.swing.JScrollPane scrListe;
     private javax.swing.JScrollPane scrollPane;

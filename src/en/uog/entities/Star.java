@@ -22,7 +22,7 @@ public class Star implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String mark;
+    private int mark;
     private String feedback;
     @ManyToOne
     @JoinColumn(name = "idMovie")
@@ -41,11 +41,11 @@ public class Star implements Serializable{
         this.id = id;
     }
 
-    public String getMark() {
+    public int getMark() {
         return mark;
     }
 
-    public void setMark(String mark) {
+    public void setMark(int mark) {
         this.mark = mark;
     }
 
@@ -78,7 +78,7 @@ public class Star implements Serializable{
     public Star() {
     }
 
-    public Star(String mark, Movie movie) {
+    public Star(int mark, Movie movie) {
         this.mark = mark;
         this.movie = movie;
     }

@@ -44,7 +44,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
      List<Movie> liste;
      BookingDaoImpl dao;
      String imageName = "";
-      List<Categorie> listeCategories;
+     List<Categorie> listeCategories;
 
      
     /**

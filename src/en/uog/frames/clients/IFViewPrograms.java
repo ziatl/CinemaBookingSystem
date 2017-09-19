@@ -152,11 +152,11 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
             bookTicket.setMovieName(onScreen.getMovie().getTitle());
             bookTicket.setUser(currentUser);
             bookTicket.setDatePurchase(new Date());
-            bookTicket.setOnScreem(dao.findOnScreenById(onScreen.getId()));
+            bookTicket.setOnScreen(dao.findOnScreenById(onScreen.getId()));
             dao.addBookTicket(bookTicket);
             String file = null;
             try {
-                file = CreatePdf.createPdf(currentUser.getFirstname() + " " + currentUser.getLastName(), bookTicket.getOnScreem().getMovie().getTitle(), bookTicket.getOnScreem().getPrice());
+                file = CreatePdf.createPdf(currentUser.getFirstname() + " " + currentUser.getLastName(), bookTicket.getOnScreen().getMovie().getTitle(), bookTicket.getOnScreen().getPrice());
             } catch (DocumentException ex) {
                 Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
             } catch (URISyntaxException ex) {

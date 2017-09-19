@@ -11,6 +11,7 @@ import en.uog.entities.Movie;
 import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
 import en.uog.entities.Room;
+import en.uog.entities.Star;
 import en.uog.entities.User;
 import java.util.List;
 
@@ -47,6 +48,7 @@ public interface IBookingDao {
     public OnScreen findOnScreenById(Integer id);
     public void delonScreen(OnScreen onScreen);
     public List<OnScreen> getAllOnScreenByCategorie(int categorie);
+    public List<OnScreen> findOnScreenByCategorie(String cat);
     
     
     //BoolTicket
@@ -60,6 +62,9 @@ public interface IBookingDao {
     public Categorie findCategorieById(Integer id);
     public void delCategorie(Categorie categorie);
     public List<Categorie> getAllCategorie();
+    
+    //Mark
+    public Star addStar(Star star);
     
     
 }

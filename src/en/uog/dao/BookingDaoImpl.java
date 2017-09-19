@@ -12,6 +12,7 @@ import en.uog.entities.Movie;
 import en.uog.entities.OnScreen;
 import en.uog.entities.Profile;
 import en.uog.entities.Room;
+import en.uog.entities.Star;
 import en.uog.entities.User;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -127,7 +128,7 @@ public class BookingDaoImpl implements IBookingDao{
     public List<Movie> getAllMovies() {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from Movie m");
+        q = em.createQuery("SELECT m from Movie m ORDER BY m.title");
         return q.getResultList();
     }
 
@@ -208,7 +209,7 @@ public class BookingDaoImpl implements IBookingDao{
     public List<OnScreen> getAllOnScreen() {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from OnScreen m");
+        q = em.createQuery("SELECT m from OnScreen m ORDER BY m.movieDate ASC");
         return q.getResultList();
     }
 
@@ -240,6 +241,17 @@ public class BookingDaoImpl implements IBookingDao{
     }
 
     @Override
+    public List<OnScreen> findOnScreenByCategorie(String cat) {
+        em = PersistenceManager.getEntityManager();
+        Query q;
+        q = em.createQuery("SELECT m from OnScreen m where m.movie.categorie.name =:X ");
+        q.setParameter("X", cat);
+        return q.getResultList();
+    }
+    
+    
+
+    @Override
     public BookTicket addBookTicket(BookTicket bookTicket) {
         EntityManager em = PersistenceManager.getEntityManager();
 		EntityTransaction et = em.getTransaction();
@@ -252,9 +264,11 @@ public class BookingDaoImpl implements IBookingDao{
 
     @Override
     public List<BookTicket> getBookTicketByUser(User user) {
+        int id = user.getId();
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from BookTicket m");
+        q = em.createQuery("SELECT m from BookTicket m where m.user.id =:X ORDER BY m.datePurchase ASC");
+        q.setParameter("X", id);
         return q.getResultList();
     }
 
@@ -306,6 +320,16 @@ public class BookingDaoImpl implements IBookingDao{
         q = em.createQuery("SELECT c from Categorie c");
         return q.getResultList();
     }
-    
-    
+
+    @Override
+    public Star addStar(Star star) {
+        EntityManager em = PersistenceManager.getEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.persist(star);
+		et.commit();
+		em.close();
+        return star;
+    }
+      
 }

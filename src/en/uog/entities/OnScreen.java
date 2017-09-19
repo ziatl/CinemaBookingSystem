@@ -38,7 +38,7 @@ public class OnScreen {
     @ManyToOne
     @JoinColumn(name = "idMovie")
     private Movie movie;
-    @OneToMany(mappedBy = "onScreem")
+    @OneToMany(mappedBy = "onScreen")
     private List<BookTicket> bookTickets;
 
     public User getUser() {

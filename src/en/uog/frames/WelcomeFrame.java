@@ -6,6 +6,8 @@
 package en.uog.frames;
 
 import en.uog.entities.User;
+import en.uog.frames.clients.IFAddMark;
+import en.uog.frames.clients.IFPurshases;
 import en.uog.frames.clients.IFViewPrograms;
 import javax.swing.JOptionPane;
 
@@ -25,23 +27,36 @@ public class WelcomeFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         if(currentuser.getProfile().getProfileName().equals("USER")){
             hideUser();
+            desktop.removeAll();
+            IFViewPrograms ifv = new IFViewPrograms(currentuser);
+            ifv.setVisible(true);
+            desktop.add(ifv);
+          
         }else{
             hideAdmin();
+              desktop.removeAll();
+            IFAddMovie ifa = new IFAddMovie();
+            ifa.setSize(desktop.getSize());
+            ifa.setVisible(true);
+            desktop.add(ifa);
         }
         
     }
     public void hideUser(){
          meneBar.remove(menuRooms);
-         meneBar.remove(itemMovie);
          itemMovie.remove(itemAddMovie);
          itemProgram.remove(itemListProgram);
          itemProgram.remove(itemAddProgram);
          meneBar.remove(itemUsers);
          meneBar.remove(menuCategorie);
+         
     }
     
     public void hideAdmin(){
         meneBar.remove(itemViewProgram);
+        meneBar.remove(itemViewProgram);
+        meneBar.remove(itemAddMarks);
+        meneBar.remove(itemMyPurschases);
     }
 
     /**
@@ -69,7 +84,8 @@ public class WelcomeFrame extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         itemMovie = new javax.swing.JMenu();
         itemAddMovie = new javax.swing.JMenuItem();
-        itemListMovie = new javax.swing.JMenuItem();
+        itemAddMarks = new javax.swing.JMenuItem();
+        itemMyPurschases = new javax.swing.JMenuItem();
         menuRooms = new javax.swing.JMenu();
         btnAddRoom = new javax.swing.JMenuItem();
         btnListRooms = new javax.swing.JMenuItem();
@@ -173,8 +189,21 @@ public class WelcomeFrame extends javax.swing.JFrame {
         });
         itemMovie.add(itemAddMovie);
 
-        itemListMovie.setText("List of movies");
-        itemMovie.add(itemListMovie);
+        itemAddMarks.setText("Add marks");
+        itemAddMarks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAddMarksActionPerformed(evt);
+            }
+        });
+        itemMovie.add(itemAddMarks);
+
+        itemMyPurschases.setText("My purchases");
+        itemMyPurschases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMyPurschasesActionPerformed(evt);
+            }
+        });
+        itemMovie.add(itemMyPurschases);
 
         meneBar.add(itemMovie);
 
@@ -307,6 +336,22 @@ public class WelcomeFrame extends javax.swing.JFrame {
         desktop.add(ifa);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void itemAddMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAddMarksActionPerformed
+        // TODO add your handling code here:
+        desktop.removeAll();
+        IFAddMark ifa = new IFAddMark(currentuser);
+        ifa.setVisible(true);
+        desktop.add(ifa);
+    }//GEN-LAST:event_itemAddMarksActionPerformed
+
+    private void itemMyPurschasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMyPurschasesActionPerformed
+        // TODO add your handling code here:
+        desktop.removeAll();
+        IFPurshases ifp = new IFPurshases(currentuser);
+        ifp.setVisible(true);
+        desktop.add(ifp);
+    }//GEN-LAST:event_itemMyPurschasesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,15 +395,16 @@ public class WelcomeFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnAddUser;
     private javax.swing.JMenuItem btnListRooms;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenuItem itemAddMarks;
     private javax.swing.JMenuItem itemAddMovie;
     private javax.swing.JMenuItem itemAddProgram;
     private javax.swing.JMenuItem itemConnexion;
     private javax.swing.JMenu itemDisconnect;
     private javax.swing.JMenuItem itemExit;
-    private javax.swing.JMenuItem itemListMovie;
     private javax.swing.JMenuItem itemListProgram;
     private javax.swing.JMenuItem itemListUsers;
     private javax.swing.JMenu itemMovie;
+    private javax.swing.JMenuItem itemMyPurschases;
     private javax.swing.JMenu itemProgram;
     private javax.swing.JMenu itemUsers;
     private javax.swing.JMenuItem itemViewProgram;

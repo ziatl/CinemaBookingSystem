@@ -109,10 +109,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemAddMovieActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itemListMovie">
+            <MenuItem class="javax.swing.JMenuItem" name="itemAddMarks">
               <Properties>
-                <Property name="text" type="java.lang.String" value="List of movies"/>
+                <Property name="text" type="java.lang.String" value="Add marks"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemAddMarksActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemMyPurschases">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="My purchases"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMyPurschasesActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

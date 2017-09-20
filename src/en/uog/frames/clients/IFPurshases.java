@@ -49,38 +49,14 @@ public class IFPurshases extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePurchasse = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableRecommandation = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jDesktopPane1.setLayout(null);
-
-        jButton1.setText("Print ⎙");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(43, 43, 43))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
-
-        jDesktopPane1.add(jPanel1);
-        jPanel1.setBounds(520, 40, 190, 180);
 
         tablePurchasse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,7 +77,7 @@ public class IFPurshases extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tablePurchasse);
 
         jDesktopPane1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 40, 500, 180);
+        jScrollPane1.setBounds(10, 40, 700, 180);
 
         tableRecommandation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,29 +93,21 @@ public class IFPurshases extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tableRecommandation);
 
         jDesktopPane1.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 260, 500, 180);
+        jScrollPane2.setBounds(10, 260, 700, 180);
 
-        jButton2.setText("Buy ");
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Our recommendations");
+        jDesktopPane1.add(jLabel1);
+        jLabel1.setBounds(280, 235, 180, 20);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(52, 52, 52))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jButton2)
-                .addContainerGap(137, Short.MAX_VALUE))
-        );
-
-        jDesktopPane1.add(jPanel2);
-        jPanel2.setBounds(520, 260, 190, 180);
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Previous Purchases");
+        jDesktopPane1.add(jLabel2);
+        jLabel2.setBounds(270, 10, 180, 20);
 
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
 
@@ -164,11 +132,9 @@ public class IFPurshases extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablePurchasse;

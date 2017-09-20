@@ -13,8 +13,8 @@ import javax.activation.*;
 public class SendMail {
 
    public static void SendEmail(String firstname,String email, String secret) {    
-	   final String username = "supquirk2017@gmail.com";
-		final String password = "Supinfo07";
+	   final String username = "cinemabooking2017@gmail.com";
+		final String password = "Admin1234";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -50,8 +50,8 @@ public class SendMail {
 		}
    }
    public static void SendReceiptOfPayment(String email,String fileName) {    
-	   final String username = "supquirk2017@gmail.com";
-		final String password = "Supinfo07";
+	   final String username = "cinemabooking2017@gmail.com";
+		final String password = "Admin1234";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");

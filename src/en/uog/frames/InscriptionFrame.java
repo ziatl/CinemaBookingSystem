@@ -200,7 +200,6 @@ public class InscriptionFrame extends javax.swing.JFrame {
         });
 
         txfPassw.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txfPassw.setText("jPasswordField1");
 
         dekstop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dekstop.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);

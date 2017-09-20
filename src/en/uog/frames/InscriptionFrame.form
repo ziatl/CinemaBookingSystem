@@ -410,7 +410,6 @@
         <Component class="javax.swing.JPasswordField" name="txfPassw">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
           </Properties>
         </Component>
       </SubComponents>

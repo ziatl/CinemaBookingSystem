@@ -53,10 +53,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
     }
     
     public void hideAdmin(){
-        meneBar.remove(itemViewProgram);
-        meneBar.remove(itemViewProgram);
-        meneBar.remove(itemAddMarks);
-        meneBar.remove(itemMyPurschases);
+        itemProgram.remove(itemViewProgram);
+        itemMovie.remove(itemAddMarks);
+        itemMovie.remove(itemMyPurschases);
     }
 
     /**

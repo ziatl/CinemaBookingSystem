@@ -37,9 +37,7 @@ public class SendMail {
 				InternetAddress.parse(email));
 			message.setSubject("Welcome message.");
 			message.setText("Hello ,"+firstname
-				+ "\n Our team wishes you a welcome. You can log in our system with these information"
-                                + "\n\n login : "+email
-				+ "\n password : "+secret
+				+ "\n Our team wishes you a welcome. You can log in our system now !"
 				+ "\n\n Thank you !!,"
 				+ "\n © Cinema Booking Systeme 2017.");
 			Transport.send(message);

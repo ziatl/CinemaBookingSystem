@@ -62,7 +62,7 @@ public class BookingDaoImpl implements IBookingDao{
     public List<User> getAllUsers() {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT u from User u");
+        q = em.createQuery("SELECT u from User u ORDER BY u.firstname");
         return q.getResultList();
     }
 
@@ -174,7 +174,7 @@ public class BookingDaoImpl implements IBookingDao{
     public List<Room> getAllRoom() {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from Room m");
+        q = em.createQuery("SELECT m from Room m ORDER BY m.roomId");
         return q.getResultList();
     }
 
@@ -209,7 +209,7 @@ public class BookingDaoImpl implements IBookingDao{
     public List<OnScreen> getAllOnScreen() {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from OnScreen m ORDER BY m.movieDate ASC");
+        q = em.createQuery("SELECT m from OnScreen m ORDER BY m.movie.title");
         return q.getResultList();
     }
 
@@ -244,7 +244,7 @@ public class BookingDaoImpl implements IBookingDao{
     public List<OnScreen> findOnScreenByCategorie(String cat) {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from OnScreen m where m.movie.categorie.name =:X ");
+        q = em.createQuery("SELECT m from OnScreen m where m.movie.categorie.name =:X ORDER BY m.movie.title");
         q.setParameter("X", cat);
         return q.getResultList();
     }
@@ -267,7 +267,7 @@ public class BookingDaoImpl implements IBookingDao{
         int id = user.getId();
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from BookTicket m where m.user.id =:X ORDER BY m.datePurchase ASC");
+        q = em.createQuery("SELECT m from BookTicket m where m.user.id =:X ORDER BY m.onScreen.movie.title");
         q.setParameter("X", id);
         return q.getResultList();
     }
@@ -317,7 +317,7 @@ public class BookingDaoImpl implements IBookingDao{
     public List<Categorie> getAllCategorie() {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT c from Categorie c");
+        q = em.createQuery("SELECT c from Categorie c ORDER BY c.name");
         return q.getResultList();
     }
 

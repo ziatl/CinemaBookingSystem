@@ -6,6 +6,7 @@
 package en.uog.tablesmodel;
 
 import en.uog.entities.Movie;
+import en.uog.entities.Star;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
@@ -16,8 +17,8 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author aziz
  */
-public class AddMovieModel extends AbstractTableModel{
-    public String[] columsName = new String[]{"Title","Abstract","Date release","Categorie"};
+public class ListBestModel extends AbstractTableModel{
+    public String[] columsName = new String[]{"Total mark","Title"};
     private Vector<String[]> rows = new Vector<String[]>();
     @Override
     public int getRowCount() {
@@ -35,7 +36,6 @@ public class AddMovieModel extends AbstractTableModel{
 
     }
     
-    
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -44,9 +44,32 @@ public class AddMovieModel extends AbstractTableModel{
     
     public void LoadMovie(List<Movie> movies){
         rows = new Vector<String[]>();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMMM yyyy");
+       
         for(Movie movie:movies){
-            rows.add(new String[]{movie.getTitle(),movie.getMovieAbstract(),""+movie.getDateRelease(),movie.getCategorie().getName()});
+            double somme = 0;
+            for (Star star : movie.getStars()) {
+                somme = somme + star.getMark();
+            }
+            if (movie.getStars().size()!=0) {
+                somme = somme / movie.getStars().size();
+            }
+            String som = "no mark";
+            if(somme>=1 && somme<2){
+                som = "★☆☆☆☆";
+            }
+            if(somme>=2 && somme<3){
+                som = "★★☆☆☆";
+            }
+            if(somme>=3 && somme<4){
+                som = "★★★☆☆";
+            }
+            if(somme>=4 && somme<5){
+                som = "★★★★☆";
+            }
+            if(somme==5){
+                som = "★★★★★";
+            }
+            rows.add(new String[]{""+som,movie.getTitle()});
         }
         fireTableChanged(null);
     }

@@ -71,7 +71,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         errTtile.setText("");
         errAbstract.setText("");
 
-        errImage.setText("");
+//        errImage.setText("");
         errCategorie.setText("");
     }
     
@@ -96,16 +96,16 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
  
         return validation;
     }
-    ImageIcon imageCour = null;
-    public ImageIcon reseizeImgae(String imagePath){
-        ImageIcon myImg = new ImageIcon(imagePath);
-        
-        Image img = myImg.getImage();
-        Image newImg = img.getScaledInstance(imgMoovie.getWidth(), imgMoovie.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon image = new ImageIcon(newImg);
-        imageCour = image;
-        return image;  
-    }
+//    ImageIcon imageCour = null;
+//    public ImageIcon reseizeImgae(String imagePath){
+//        ImageIcon myImg = new ImageIcon(imagePath);
+//        
+//        Image img = myImg.getImage();
+//        Image newImg = img.getScaledInstance(imgMoovie.getWidth(), imgMoovie.getHeight(), Image.SCALE_SMOOTH);
+//        ImageIcon image = new ImageIcon(newImg);
+//        imageCour = image;
+//        return image;  
+//    }
     public void saveImage(ImageIcon imageIco) throws IOException{
         
         File file = new File(imageName);
@@ -137,10 +137,7 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         btnDelete = new javax.swing.JButton();
         panDate = new javax.swing.JPanel();
         btnAddMovie = new javax.swing.JButton();
-        btnAddImage = new javax.swing.JButton();
-        imgMoovie = new javax.swing.JLabel();
         errAbstract = new javax.swing.JLabel();
-        errImage = new javax.swing.JLabel();
         comboCategorie = new javax.swing.JComboBox<>();
         errCategorie = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -157,37 +154,40 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(jLabel1);
         jLabel1.setBounds(130, 10, 380, 30);
 
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Title :");
         desktop.add(jLabel2);
-        jLabel2.setBounds(50, 40, 36, 16);
+        jLabel2.setBounds(130, 40, 28, 15);
         desktop.add(txfTitle);
-        txfTitle.setBounds(90, 40, 290, 26);
+        txfTitle.setBounds(180, 40, 290, 26);
 
         errTtile.setForeground(new java.awt.Color(255, 255, 51));
         errTtile.setText("err title");
         desktop.add(errTtile);
-        errTtile.setBounds(390, 40, 210, 16);
+        errTtile.setBounds(480, 40, 200, 16);
 
+        jLabel3.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Release date :");
         desktop.add(jLabel3);
-        jLabel3.setBounds(10, 170, 90, 16);
+        jLabel3.setBounds(130, 170, 90, 15);
 
         txfAbstract.setColumns(20);
         txfAbstract.setRows(5);
         scrollPane.setViewportView(txfAbstract);
 
         desktop.add(scrollPane);
-        scrollPane.setBounds(90, 70, 290, 60);
+        scrollPane.setBounds(180, 70, 290, 60);
 
+        jLabel4.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Abstract:");
         desktop.add(jLabel4);
-        jLabel4.setBounds(16, 70, 70, 16);
+        jLabel4.setBounds(100, 80, 70, 15);
 
         tableMovie.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,7 +206,8 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(scrListe);
         scrListe.setBounds(10, 210, 680, 170);
 
-        btnDelete.setText("Delete");
+        btnDelete.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        btnDelete.setText("Delete ✕");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -215,8 +216,9 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(btnDelete);
         btnDelete.setBounds(320, 390, 97, 29);
         desktop.add(panDate);
-        panDate.setBounds(100, 170, 220, 30);
+        panDate.setBounds(240, 170, 220, 30);
 
+        btnAddMovie.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         btnAddMovie.setText("Add movie");
         btnAddMovie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,45 +228,26 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         desktop.add(btnAddMovie);
         btnAddMovie.setBounds(210, 390, 110, 29);
 
-        btnAddImage.setText("load image");
-        btnAddImage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddImageActionPerformed(evt);
-            }
-        });
-        desktop.add(btnAddImage);
-        btnAddImage.setBounds(530, 130, 113, 29);
-
-        imgMoovie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imgMoovie.setText("jLabel5");
-        desktop.add(imgMoovie);
-        imgMoovie.setBounds(550, 40, 80, 80);
-
         errAbstract.setForeground(new java.awt.Color(255, 255, 51));
         errAbstract.setText("err abstract");
         desktop.add(errAbstract);
-        errAbstract.setBounds(390, 70, 140, 16);
-
-        errImage.setForeground(new java.awt.Color(255, 255, 51));
-        errImage.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        errImage.setText("err image");
-        desktop.add(errImage);
-        errImage.setBounds(390, 90, 140, 16);
+        errAbstract.setBounds(480, 70, 200, 16);
 
         comboCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         desktop.add(comboCategorie);
-        comboCategorie.setBounds(90, 140, 130, 27);
+        comboCategorie.setBounds(280, 140, 130, 27);
 
         errCategorie.setForeground(new java.awt.Color(255, 255, 51));
         errCategorie.setText("err category");
         desktop.add(errCategorie);
-        errCategorie.setBounds(230, 140, 140, 16);
+        errCategorie.setBounds(480, 140, 200, 16);
 
+        jLabel5.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setText("Category :");
         desktop.add(jLabel5);
-        jLabel5.setBounds(10, 140, 80, 16);
+        jLabel5.setBounds(200, 140, 80, 15);
 
         getContentPane().add(desktop);
 
@@ -279,14 +262,14 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
             movie.setMovieAbstract(txfAbstract.getText());
             Date selectDate = (Date) datePicker.getModel().getValue();
             movie.setDateRelease(selectDate);
-            if (imageCour!=null) {
-//                try {
-//                    saveImage(imageCour);
-//                } catch (IOException ex) {
-//                    System.err.println("Errer enregistrement image");
-//                }
-                movie.setImage(imageName);
-            }
+//            if (imageCour!=null) {
+////                try {
+////                    saveImage(imageCour);
+////                } catch (IOException ex) {
+////                    System.err.println("Errer enregistrement image");
+////                }
+//                movie.setImage(imageName);
+//            }
             Categorie categorie = listeCategories.get(comboCategorie.getSelectedIndex()-1);
             movie.setCategorie(categorie);
             dao.addMovie(movie);
@@ -324,39 +307,16 @@ public class IFAddMovie extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
-        // TODO add your handling code here:
-        JFileChooser jf = new JFileChooser();
-        jf.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter =  new FileNameExtensionFilter("*.Images","jpg","jpeg","tiff","gift","png");
-        jf.addChoosableFileFilter(filter);
-        int result = jf.showSaveDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION){
-            File selectedFile = jf.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            imageName = selectedFile.getName();
-            System.err.println(ValidationProvider.generateImageName()+imageName);
-            imgMoovie.setIcon(reseizeImgae(path));
-        }else if (result == JFileChooser.CANCEL_OPTION){
-            System.out.println("No file select");
-        }
-            
-        
-    }//GEN-LAST:event_btnAddImageActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddImage;
     private javax.swing.JButton btnAddMovie;
     private javax.swing.JButton btnDelete;
     private javax.swing.JComboBox<String> comboCategorie;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel errAbstract;
     private javax.swing.JLabel errCategorie;
-    private javax.swing.JLabel errImage;
     private javax.swing.JLabel errTtile;
-    private javax.swing.JLabel imgMoovie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

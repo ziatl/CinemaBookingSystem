@@ -56,7 +56,6 @@ public class IFUserManage extends javax.swing.JInternalFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(537, 481));
-        setPreferredSize(new java.awt.Dimension(537, 481));
         setSize(new java.awt.Dimension(537, 481));
 
         desktop.setLayout(new java.awt.BorderLayout(3, 3));
@@ -76,10 +75,10 @@ public class IFUserManage extends javax.swing.JInternalFrame {
 
         desktop.add(scrollUser, java.awt.BorderLayout.CENTER);
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         btnDelete.setBackground(new java.awt.Color(255, 0, 51));
-        btnDelete.setText("Delete user");
+        btnDelete.setText("Delete user ✕");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);

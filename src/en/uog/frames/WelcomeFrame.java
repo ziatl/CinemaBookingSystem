@@ -77,7 +77,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
         itemListProgram = new javax.swing.JMenuItem();
         itemViewProgram = new javax.swing.JMenuItem();
         itemUsers = new javax.swing.JMenu();
-        btnAddUser = new javax.swing.JMenuItem();
         itemListUsers = new javax.swing.JMenuItem();
         menuCategorie = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -99,6 +98,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         desktop.setLayout(new java.awt.BorderLayout(1, 0));
 
         itemDisconnect.setText("File");
+        itemDisconnect.setFont(new java.awt.Font("Marker Felt", 0, 14)); // NOI18N
 
         itemConnexion.setText("Disconnect");
         itemConnexion.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +119,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         meneBar.add(itemDisconnect);
 
         itemProgram.setText("Programs");
+        itemProgram.setFont(new java.awt.Font("Marker Felt", 0, 14)); // NOI18N
 
         itemAddProgram.setText("Add Program");
         itemAddProgram.addActionListener(new java.awt.event.ActionListener() {
@@ -147,14 +148,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         meneBar.add(itemProgram);
 
         itemUsers.setText("Users");
-
-        btnAddUser.setText("Add user");
-        btnAddUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddUserActionPerformed(evt);
-            }
-        });
-        itemUsers.add(btnAddUser);
+        itemUsers.setFont(new java.awt.Font("Marker Felt", 0, 14)); // NOI18N
 
         itemListUsers.setText("List of users");
         itemListUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +161,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         meneBar.add(itemUsers);
 
         menuCategorie.setText("Categories");
+        menuCategorie.setFont(new java.awt.Font("Marker Felt", 0, 14)); // NOI18N
 
         jMenuItem1.setText("Add categorie");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +174,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         meneBar.add(menuCategorie);
 
         itemMovie.setText("Movies");
+        itemMovie.setFont(new java.awt.Font("Marker Felt", 0, 14)); // NOI18N
 
         itemAddMovie.setText("Add movie");
         itemAddMovie.addActionListener(new java.awt.event.ActionListener() {
@@ -207,6 +203,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
         meneBar.add(itemMovie);
 
         menuRooms.setText("Rooms");
+        menuRooms.setFont(new java.awt.Font("Marker Felt", 0, 14)); // NOI18N
 
         btnAddRoom.setText("Add Room");
         btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
@@ -217,11 +214,17 @@ public class WelcomeFrame extends javax.swing.JFrame {
         menuRooms.add(btnAddRoom);
 
         btnListRooms.setText("List of Rooms");
+        btnListRooms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListRoomsActionPerformed(evt);
+            }
+        });
         menuRooms.add(btnListRooms);
 
         meneBar.add(menuRooms);
 
         jMenu2.setText("Edit");
+        jMenu2.setFont(new java.awt.Font("Marker Felt", 0, 14)); // NOI18N
         meneBar.add(jMenu2);
 
         setJMenuBar(meneBar);
@@ -291,10 +294,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_itemAddMovieActionPerformed
 
-    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddUserActionPerformed
-
     private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
         // TODO add your handling code here:
         desktop.removeAll();
@@ -351,6 +350,14 @@ public class WelcomeFrame extends javax.swing.JFrame {
         desktop.add(ifp);
     }//GEN-LAST:event_itemMyPurschasesActionPerformed
 
+    private void btnListRoomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListRoomsActionPerformed
+        // TODO add your handling code here:
+        desktop.removeAll();
+        IFAddRoom ifa = new IFAddRoom();
+        ifa.setVisible(true);
+        desktop.add(ifa);
+    }//GEN-LAST:event_btnListRoomsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -391,7 +398,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAddRoom;
-    private javax.swing.JMenuItem btnAddUser;
     private javax.swing.JMenuItem btnListRooms;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem itemAddMarks;

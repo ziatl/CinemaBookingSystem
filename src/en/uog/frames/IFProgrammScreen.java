@@ -149,26 +149,30 @@ public class IFProgrammScreen extends javax.swing.JInternalFrame {
         jDesktopPane1.add(lblShowNumber);
         lblShowNumber.setBounds(230, 50, 200, 16);
 
+        jLabel3.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Price :");
         jDesktopPane1.add(jLabel3);
         jLabel3.setBounds(110, 260, 120, 20);
 
+        jLabel4.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel4.setText("Show Number : ");
         jDesktopPane1.add(jLabel4);
-        jLabel4.setBounds(110, 50, 120, 16);
+        jLabel4.setBounds(110, 50, 120, 15);
         jDesktopPane1.add(panDate);
         panDate.setBounds(240, 170, 220, 30);
 
+        jLabel5.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel5.setText("Room :");
         jDesktopPane1.add(jLabel5);
         jLabel5.setBounds(100, 120, 120, 20);
 
+        jLabel6.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("Movie time :");
@@ -183,12 +187,14 @@ public class IFProgrammScreen extends javax.swing.JInternalFrame {
         jDesktopPane1.add(txfPrice);
         txfPrice.setBounds(240, 260, 100, 26);
 
+        jLabel7.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("Movie date :");
         jDesktopPane1.add(jLabel7);
         jLabel7.setBounds(110, 170, 120, 20);
 
+        jLabel8.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel8.setText("Movie :");
@@ -223,6 +229,7 @@ public class IFProgrammScreen extends javax.swing.JInternalFrame {
         jDesktopPane1.add(comboHour);
         comboHour.setBounds(240, 230, 80, 27);
 
+        btnProgram.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         btnProgram.setText("Program");
         btnProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +237,7 @@ public class IFProgrammScreen extends javax.swing.JInternalFrame {
             }
         });
         jDesktopPane1.add(btnProgram);
-        btnProgram.setBounds(280, 320, 96, 29);
+        btnProgram.setBounds(280, 320, 85, 29);
 
         errPrice.setForeground(new java.awt.Color(255, 255, 51));
         errPrice.setText("set price");

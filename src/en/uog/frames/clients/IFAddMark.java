@@ -60,15 +60,18 @@ public class IFAddMark extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayout(new java.awt.BorderLayout());
 
         lblMovie.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        lblMovie.setForeground(new java.awt.Color(153, 51, 255));
         lblMovie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMovie.setText("Select movie");
 
         spinnerMark.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
         spinnerMark.setToolTipText("");
 
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Select your mark :");
 
+        btnAddMark.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         btnAddMark.setText("Add/Update your mark");
         btnAddMark.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

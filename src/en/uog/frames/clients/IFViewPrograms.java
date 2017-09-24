@@ -99,11 +99,13 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
         jDesktopPane1.add(scrilll, java.awt.BorderLayout.CENTER);
 
         txaDetails.setColumns(20);
+        txaDetails.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txaDetails.setRows(5);
         jScrollPane1.setViewportView(txaDetails);
 
         jDesktopPane1.add(jScrollPane1, java.awt.BorderLayout.PAGE_END);
 
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel1.setText("Categorie : ");
         jPanel1.add(jLabel1);
 
@@ -126,6 +128,7 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
+        btnBuy.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         btnBuy.setText("Buy");
         btnBuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,37 +144,46 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         // TODO add your handling code here:
-        JOptionPane jop = new JOptionPane();	
-        this.setVisible(false);
-        int option = jop.showConfirmDialog(null, "Do you want to buy it ?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);		
-        if(option == JOptionPane.OK_OPTION){
-            if (tableProgram.getSelectedRow() != -1) {
-            OnScreen onScreen = liste.get(tableProgram.getSelectedRow());
-            dao = new BookingDaoImpl();
-            BookTicket bookTicket = new BookTicket();
-            bookTicket.setMovieName(onScreen.getMovie().getTitle());
-            bookTicket.setUser(currentUser);
-            bookTicket.setDatePurchase(new Date());
-            bookTicket.setOnScreen(dao.findOnScreenById(onScreen.getId()));
-            dao.addBookTicket(bookTicket);
-            String file = null;
-            try {
-                file = CreatePdf.createPdf(currentUser.getFirstname() + " " + currentUser.getLastName(), bookTicket.getOnScreen().getMovie().getTitle(), bookTicket.getOnScreen().getPrice());
-            } catch (DocumentException ex) {
-                Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            SendMail.SendReceiptOfPayment(currentUser.getEmail(), file);
+         this.setVisible(false);
+        String[] choices = { "1", "2", "3", "4" };
+    String input = (String) JOptionPane.showInputDialog(null, "How many tichkets do you want ?",
+        "Number of Tickets", JOptionPane.QUESTION_MESSAGE, null, 
+        choices, // Array of choices
+        choices[0]); // Initial choice
+        if (input==null) {
+            this.setVisible(true);
+            System.err.println("nullllll");
+        }else{
+            this.setVisible(true);
+                    for (int i = 0; i < Integer.parseInt(input); i++) {
+                        	
+                    if (tableProgram.getSelectedRow() != -1) {
+                    OnScreen onScreen = liste.get(tableProgram.getSelectedRow());
+                    dao = new BookingDaoImpl();
+                    BookTicket bookTicket = new BookTicket();
+                    bookTicket.setMovieName(onScreen.getMovie().getTitle());
+                    bookTicket.setUser(currentUser);
+                    bookTicket.setDatePurchase(new Date());
+                    bookTicket.setOnScreen(dao.findOnScreenById(onScreen.getId()));
+                    dao.addBookTicket(bookTicket);
+                    String file = null;
+                    try {
+                        file = CreatePdf.createPdf(currentUser.getFirstname() + " " + currentUser.getLastName(), bookTicket.getOnScreen().getMovie().getTitle(), bookTicket.getOnScreen().getPrice());
+                    } catch (DocumentException ex) {
+                        Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (URISyntaxException ex) {
+                        Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    SendMail.SendReceiptOfPayment(currentUser.getEmail(), file);
 
-        }else{
-            System.err.println("Please select user before");
-        }
-            this.setVisible(true);
-        }else{
-            this.setVisible(true);
+                }else{
+                    System.err.println("Please select user before");
+                }
+                    this.setVisible(true);
+
+            }
         }
         
 

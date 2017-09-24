@@ -44,14 +44,15 @@ public class MovieFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableMovie = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAbstract = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("List of Movie");
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
+        jButton1.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jButton1.setText("Return ⏎");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,11 +71,17 @@ public class MovieFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableMovie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMovieMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableMovie);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAbstract.setColumns(20);
+        txtAbstract.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtAbstract.setRows(5);
+        jScrollPane1.setViewportView(txtAbstract);
 
         jPanel4.setBackground(new java.awt.Color(155, 89, 182));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -125,7 +132,7 @@ public class MovieFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,6 +151,13 @@ public class MovieFrame extends javax.swing.JFrame {
         PrincipalFrame pf = new PrincipalFrame();
         pf.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tableMovieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMovieMouseClicked
+
+        // TODO add your handling code here:
+        Movie movie = liste.get(tableMovie.getSelectedRow());
+        txtAbstract.setText("Abstract : "+movie.getMovieAbstract());
+    }//GEN-LAST:event_tableMovieMouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,15 +197,11 @@ public class MovieFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tableMovie;
+    private javax.swing.JTextArea txtAbstract;
     // End of variables declaration//GEN-END:variables
 }

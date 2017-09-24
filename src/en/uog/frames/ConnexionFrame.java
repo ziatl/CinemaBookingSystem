@@ -60,8 +60,8 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
 
         jDesktopPane1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 0, 255));
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cinema Booking System");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -106,10 +106,12 @@ public class ConnexionFrame extends javax.swing.JFrame implements WindowListener
         jDesktopPane1.add(jLabel3);
         jLabel3.setBounds(230, 120, 60, 18);
 
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("© Copyright 2017 F.TITIKPINA");
+        jLabel4.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("© Copyright 2017 T. FAYÇAL");
         jDesktopPane1.add(jLabel4);
-        jLabel4.setBounds(170, 380, 190, 16);
+        jLabel4.setBounds(160, 380, 190, 16);
 
         txfLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txfLogin.addActionListener(new java.awt.event.ActionListener() {

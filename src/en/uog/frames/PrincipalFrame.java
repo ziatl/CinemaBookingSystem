@@ -130,7 +130,8 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Close ✖︎");
+        jButton5.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
+        jButton5.setText("Close ✖");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);

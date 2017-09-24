@@ -78,9 +78,11 @@ public class IFAddCategorie extends javax.swing.JInternalFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Name :");
 
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Description :");
 
@@ -88,6 +90,7 @@ public class IFAddCategorie extends javax.swing.JInternalFrame {
         txfDescription.setRows(5);
         jScrollPane2.setViewportView(txfDescription);
 
+        btnAdd.setFont(new java.awt.Font("Marker Felt", 0, 13)); // NOI18N
         btnAdd.setText("Add ");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

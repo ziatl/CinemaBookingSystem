@@ -6,6 +6,7 @@
 package en.uog.entities;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Room {
     private int numberOfPlace;
     
     // Database relations
-    @OneToMany(mappedBy = "room")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "room")
     private List<OnScreen> onScreem;
 
     public List<OnScreen> getOnScreem() {

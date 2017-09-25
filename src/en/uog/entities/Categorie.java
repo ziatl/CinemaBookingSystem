@@ -7,6 +7,7 @@ package en.uog.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Categorie implements Serializable{
     private String name;
     private String description;
     // Database relations
-    @OneToMany(mappedBy = "categorie")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "categorie")
     private List<Movie> movies;
 
     public int getId() {

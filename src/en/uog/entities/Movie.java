@@ -7,6 +7,7 @@ package en.uog.entities;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,12 +31,12 @@ public class Movie {
     private String image;
     
     //Database relations
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "movie")
     private List<OnScreen> onScreems;
     @ManyToOne
     @JoinColumn(name = "idCategorie")
     private Categorie categorie;
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "movie")
     List<Star> stars;
 
     public List<OnScreen> getOnScreems() {

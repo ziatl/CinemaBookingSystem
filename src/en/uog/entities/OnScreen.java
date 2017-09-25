@@ -7,6 +7,7 @@ package en.uog.entities;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,7 @@ public class OnScreen {
     @ManyToOne
     @JoinColumn(name = "idMovie")
     private Movie movie;
-    @OneToMany(mappedBy = "onScreen")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "onScreen")
     private List<BookTicket> bookTickets;
 
     public User getUser() {

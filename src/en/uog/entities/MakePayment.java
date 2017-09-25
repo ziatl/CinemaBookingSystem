@@ -5,6 +5,7 @@
  */
 package en.uog.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class MakePayment {
     private String transcationId;
 
     //Database relations
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REMOVE})
     @JoinColumn(name = "idUser")
     private User user;
 

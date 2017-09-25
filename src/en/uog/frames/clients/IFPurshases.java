@@ -124,7 +124,8 @@ public class IFPurshases extends javax.swing.JInternalFrame {
             tableRecommandation.setModel(listRecommandationModel);
             System.err.println("Movie : "+bookTicket.getOnScreen().getMovie().getTitle());
             System.err.println("Categorie : "+bookTicket.getOnScreen().getMovie().getCategorie().getName());
-            listeOnScreens = dao.findOnScreenByCategorie(bookTicket.getOnScreen().getMovie().getCategorie().getName());             
+            listeOnScreens = dao.findOnScreenByCategorie(bookTicket.getOnScreen().getMovie().getCategorie().getName(),bookTicket.getOnScreen().getMovie().getId());             
+            listeOnScreens.remove(bookTicket);
             listRecommandationModel.LoadOnScreen(listeOnScreens);
             
         }

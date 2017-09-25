@@ -48,7 +48,7 @@ public interface IBookingDao {
     public OnScreen findOnScreenById(Integer id);
     public void delonScreen(OnScreen onScreen);
     public List<OnScreen> getAllOnScreenByCategorie(int categorie);
-    public List<OnScreen> findOnScreenByCategorie(String cat);
+    public List<OnScreen> findOnScreenByCategorie(String cat,int id);
     
     
     //BoolTicket

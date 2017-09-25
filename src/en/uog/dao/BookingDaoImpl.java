@@ -241,11 +241,12 @@ public class BookingDaoImpl implements IBookingDao{
     }
 
     @Override
-    public List<OnScreen> findOnScreenByCategorie(String cat) {
+    public List<OnScreen> findOnScreenByCategorie(String cat,int id) {
         em = PersistenceManager.getEntityManager();
         Query q;
-        q = em.createQuery("SELECT m from OnScreen m where m.movie.categorie.name =:X ORDER BY m.movie.title");
+        q = em.createQuery("SELECT m from OnScreen m where m.movie.categorie.name =:X and m.movie.id !=:Y BY m.movie.title");
         q.setParameter("X", cat);
+        q.setParameter("Y", id);
         return q.getResultList();
     }
     

@@ -109,7 +109,11 @@ public class IFUserManage extends javax.swing.JInternalFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here: 
-        if (currentUser.getProfile().getProfileName().equals("ADMIN")) {
+        if (tableUser.getSelectedRow() != -1) {
+            
+
+        User userU = liste.get(tableUser.getSelectedRow());
+        if (userU.getProfile().getProfileName().equals("ADMIN")) {
             JOptionPane jop = new JOptionPane();	
             this.setVisible(false);
             int option = jop.showConfirmDialog(null, "You can not delete administrator", "Message", JOptionPane.WARNING_MESSAGE, JOptionPane.QUESTION_MESSAGE);		
@@ -143,6 +147,8 @@ public class IFUserManage extends javax.swing.JInternalFrame {
             }else{
                 this.setVisible(true);
             }            
+        }   
+        
         }
         
     }//GEN-LAST:event_btnDeleteActionPerformed

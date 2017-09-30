@@ -140,13 +140,13 @@ public class CreatePdf {
 	 		       cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 	 		        table.addCell(cell);
 	 		        // we add the four remaining cells with addCell()
-	 		        cell = new PdfPCell(new Phrase((new Chunk(price+"$", FontFactory.getFont(FontFactory.COURIER,18)))));
+	 		        cell = new PdfPCell(new Phrase((new Chunk(price+"‎£", FontFactory.getFont(FontFactory.COURIER,18)))));
 	 		        cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 	 		        table.addCell(cell);
 	 		       cell = new PdfPCell(new Phrase((new Chunk("Total", FontFactory.getFont(FontFactory.COURIER_BOLD,18)))));
 	 		        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 	 		        table.addCell(cell);
-	 		       cell = new PdfPCell(new Phrase((new Chunk(price+"$", FontFactory.getFont(FontFactory.COURIER_BOLD,18)))));
+	 		       cell = new PdfPCell(new Phrase((new Chunk(price+"‎£", FontFactory.getFont(FontFactory.COURIER_BOLD,18)))));
 	 		        cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 	 		       table.addCell(cell); 			    
      }

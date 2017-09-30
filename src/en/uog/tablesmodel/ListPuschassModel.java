@@ -44,7 +44,7 @@ public class ListPuschassModel extends AbstractTableModel {
          rows = new Vector<String[]>();
         for(BookTicket bookTicket:bookTickets){
             OnScreen os = bookTicket.getOnScreen();
-            rows.add(new String[]{""+os.getMovie().getTitle(),""+bookTicket.getDatePurchase(),""+os.getPrice()+"£"});
+            rows.add(new String[]{""+os.getMovie().getTitle(),""+bookTicket.getDatePurchase(),"‎£"+os.getPrice()});
         }
         fireTableChanged(null);
     }

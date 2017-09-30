@@ -72,7 +72,7 @@ public class ListRecommandationModel extends AbstractTableModel {
                 som = "★★★★★";
             }
             
-            rows.add(new String[]{""+onScreen.getMovie().getTitle(),""+som,""+onScreen.getPrice()+"£",""+onScreen.getMovieDate()});
+            rows.add(new String[]{""+onScreen.getMovie().getTitle(),""+som,"‎£"+onScreen.getPrice(),""+onScreen.getMovieDate()});
         }
         fireTableChanged(null);
     }

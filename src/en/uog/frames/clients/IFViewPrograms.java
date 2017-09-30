@@ -169,7 +169,7 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
                     dao.addBookTicket(bookTicket);
                     String file = null;
                     try {
-                        file = CreatePdf.createPdf(currentUser.getFirstname() + " " + currentUser.getLastName(), bookTicket.getOnScreen().getMovie().getTitle(), bookTicket.getOnScreen().getPrice());
+                        file = CreatePdf.createPdf(currentUser.getFirstname() + " " + currentUser.getLastName(), bookTicket.getOnScreen().getMovie().getTitle(), bookTicket.getOnScreen().getPrice(),bookTicket.getOnScreen().getMovieDate());
                     } catch (DocumentException ex) {
                         Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (URISyntaxException ex) {

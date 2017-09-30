@@ -41,7 +41,7 @@ public String[] columsName = new String[]{"Movie name","Date/Time","Price"};
     public void LoadOnScreen(List<OnScreen> onScreens){
          rows = new Vector<String[]>();
         for(OnScreen onScreen:onScreens){
-            rows.add(new String[]{""+onScreen.getMovie().getTitle(),""+onScreen.getMovieDate(),""+onScreen.getPrice()});
+            rows.add(new String[]{""+onScreen.getMovie().getTitle(),""+onScreen.getMovieDate(),""+onScreen.getPrice()+"‎£"});
         }
         fireTableChanged(null);
     }

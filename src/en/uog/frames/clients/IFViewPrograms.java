@@ -5,6 +5,7 @@
  */
 package en.uog.frames.clients;
 
+import com.google.zxing.WriterException;
 import com.itextpdf.text.DocumentException;
 import en.uog.dao.BookingDaoImpl;
 import en.uog.dao.CreatePdf;
@@ -175,7 +176,9 @@ public class IFViewPrograms extends javax.swing.JInternalFrame {
                         Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
                         Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    }   catch (WriterException ex) {
+                            Logger.getLogger(IFViewPrograms.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     SendMail.SendReceiptOfPayment(currentUser.getEmail(), file);
 
                 }else{

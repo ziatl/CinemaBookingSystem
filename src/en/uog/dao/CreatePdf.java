@@ -5,6 +5,11 @@
  */
 package en.uog.dao;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -36,6 +41,7 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Date;
 
 /**
  *
@@ -48,7 +54,7 @@ public class CreatePdf {
 	public static Double price;
 	
 
-	 public static String createPdf(String userName,String movieTitle,Double moviePrice) throws DocumentException, URISyntaxException, IOException{
+	 public static String createPdf(String userName,String movieTitle,Double moviePrice) throws DocumentException, URISyntaxException, IOException, WriterException{
 	        title = movieTitle;
 	        name = userName;
 	        price = moviePrice;
@@ -56,7 +62,21 @@ public class CreatePdf {
 	        System.out.println(System.getProperty("user.dir"));
 	        String home = System.getProperty("user.home");
 	        String file = new String(home+"/Downloads/" + userName + ValidationProvider.generateImageName() + ".pdf"); 
-	        PdfWriter.getInstance(document  , new FileOutputStream(file));
+	        //Create QrCode
+                String data = userName+" "+movieTitle+" "+ new Date();
+                int size = 400;
+
+                // encode
+                BitMatrix bitMatrix = generateMatrix(data, size);
+                System.out.println("code"+bitMatrix.toString());
+		String imageFormat = "png";
+                String outputFileName = home+"/Downloads/"+"qrcode-01." + imageFormat;   
+                writeImage(outputFileName, imageFormat, bitMatrix);
+                Image imgQR = Image.getInstance(home+"/Downloads/qrcode-01.png");
+		        imgQR.scalePercent(30);
+                //
+                
+                PdfWriter.getInstance(document  , new FileOutputStream(file));
 	        document.open();
 	        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
 	        Chunk chunkOwner = new Chunk("Owner : "+name, font);
@@ -87,6 +107,10 @@ public class CreatePdf {
 	        addCustomRows(table);
 	        document.add(paragraph);
 	        document.add(table);
+                
+                paragraph.add(new Paragraph(new Chunk(" ", font)));
+                paragraph.add(new Paragraph(new Chunk(" ", font)));
+                document.add(imgQR);
 
 
 	        document.close();
@@ -126,4 +150,14 @@ public class CreatePdf {
 	 		        cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 	 		       table.addCell(cell); 			    
      }
+                
+     private static void writeImage(String outputFileName, String imageFormat, BitMatrix bitMatrix) throws IOException  {
+        FileOutputStream fileOutputStream = new FileOutputStream(new File(outputFileName));
+         MatrixToImageWriter.writeToStream(bitMatrix, imageFormat, fileOutputStream);
+        fileOutputStream.close();
+    }
+	private static BitMatrix generateMatrix(String data, int size) throws WriterException {
+        BitMatrix bitMatrix = new QRCodeWriter().encode(data, BarcodeFormat.QR_CODE, size, size);
+        return bitMatrix;
+    }
 }

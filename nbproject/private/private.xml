@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/dao/BookingDaoImpl.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/tablesmodel/ListPuschassModel.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/tablesmodel/AddRoomModel.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/frames/IFUserManage.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/dao/IBookingDao.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/frames/InscriptionFrame.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/tablesmodel/ListBestModel.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/dao/SendMail.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/entities/MakePayment.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/frames/clients/IFPurshases.java</file>
+            <file>file:/Users/aziz/NetBeansProjects/Poo_adventure/CinemaBookingSystem/src/en/uog/frames/IFAddMovie.java</file>
+        </group>
     </open-files>
 </project-private>

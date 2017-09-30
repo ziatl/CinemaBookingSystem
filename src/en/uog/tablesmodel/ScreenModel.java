@@ -46,7 +46,7 @@ public class ScreenModel extends AbstractTableModel {
                       +""+screen.getRoom().getRoomId(),
                        ""+screen.getMovie().getTitle(),
                          ""+screen.getMovieDate(),
-                        ""+screen.getPrice()
+                        ""+screen.getPrice()+"£"
               });
         }
         fireTableChanged(null);
